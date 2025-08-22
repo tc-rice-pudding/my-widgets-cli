@@ -77,11 +77,14 @@ const state = reactive({
 
 const handleEnter = () => {
   conditionStore.addCondition(state.keyword);
+};
+
+watchEffect(() => {
   emits("update:condition", {
     keywordType: state.keywordType,
     keyword: state.keyword,
   });
-};
+});
 </script>
 
 <style scoped lang='scss'>
