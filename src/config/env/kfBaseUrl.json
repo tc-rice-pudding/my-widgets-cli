@@ -1,0 +1,5 @@
+{
+  "dev": "https://test-admin..com",
+  "uat": "https://uat-admin.com",
+  "prod": "https://dev-admin.com"
+}

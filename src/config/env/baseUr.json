@@ -1,0 +1,6 @@
+{
+  "dev": "https://test-infragateway.com/api",
+  "mock": "https://test-infragateway.com/api",
+  "uat": "https://uat-infragateway.com/api",
+  "prod": "https://prod-infragateway.com/api"
+}

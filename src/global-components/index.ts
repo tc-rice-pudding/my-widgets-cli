@@ -1,0 +1,17 @@
+export { default as GlobalEmpty } from "./GlobalEmpty/index.vue";
+export { default as Avatars } from "./Avatar/index.vue";
+export { default as GlobalTable } from "./GlobalTable/index.vue";
+export { default as SvgIcon } from "./SvgIcon/index.vue";
+export { default as GlobalPagination } from "./GlobalPagination/index.vue";
+export { default as GlobalHeader } from "./GlobalHeader/index.vue";
+export { default as GlobalTableForm } from "./GlobalTableForm/index.vue";
+export { default as GlobalEcharts } from "./GlobalEcharts/index.vue";
+export { default as GlobalTree } from "./GlobalTree/index.vue";
+export { default as GlobalTreeV2 } from "./GlobalTreeV2/index.vue";
+export { default as GlobalTabPanes } from "./GlobalTabPanes/index.vue";
+export { default as GlobalTreeTransfer } from "./GlobalTreeTransfer/index.vue";
+export { default as GlobalProgress } from "./GlobalProgress/index.vue";
+// export { default as ElMessageBoxMdx } from "./GlobalConfirm/index";
+export { default as GlobalUpload } from "./GlobalUpload/index.vue";
+export { default as GlobalContentTitle } from "./GlobalContentTitle/index.vue";
+export { default as GlobalAddContainer } from "./GlobalAddContainer/index.vue";

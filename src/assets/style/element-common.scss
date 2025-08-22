@@ -1,0 +1,263 @@
+//自动移滚动条样式 start
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 1em;
+  width: 100px;
+  min-height: 50px;
+  min-width: 50px;
+  background-color: #3232324d;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 1em;
+  background-color: rgba(50, 50, 50, 0.1);
+}
+
+::-webkit-scrollbar:horizontal {
+  width: 40px;
+  background-color: transparent;
+}
+
+.el-button:not(.is-text) {
+  font-size: 12px;
+}
+
+.el-select-dropdown__item {
+  padding: 0 32px 0 20px;
+}
+
+.table-filter-contain {
+  background-color: $contentBgColor;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  padding: 15px;
+}
+
+.table-content-contain {
+  background-color: $contentBgColor;
+  border-radius: 4px;
+}
+
+.input-normal-contain {
+  .el-form-item__content {
+    width: 215px;
+  }
+
+  .el-input--small .el-input__inner {
+    width: 215px;
+  }
+}
+
+.input-normal {
+  width: 215px;
+}
+
+.el-table {
+  td {
+    padding: 0;
+  }
+
+  tr {
+    height: 44px;
+  }
+
+  .el-table__body tr.current-row>td {
+    background-color: #f1f3ff !important;
+  }
+
+  .cell {
+    font-size: 12px;
+    // text-align: center;
+    color: #2a2b2e;
+    text-align: left;
+    padding-left: 32px;
+  }
+
+  th>.cell {
+    font-size: 14px;
+    font-weight: 500;
+    // text-align: center;
+    text-align: left;
+    padding-left: 32px;
+    color: rgba($color: #000000, $alpha: .6);
+  }
+}
+
+.no_data {
+  text-align: center;
+  font-size: 14px;
+  color: #abacb3;
+}
+
+.el-pagination {
+  padding: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.el-pager li {
+  background: #f1f5ff;
+  border-radius: 4px;
+  margin: 0 4px;
+  color: '#3E3E40';
+}
+
+.el-pager li.is-active {
+  color: #fff;
+  background: $mainColor;
+}
+
+.el-pagination .btn-prev,
+.el-pagination .btn-next {
+  background: #f1f5ff;
+}
+
+//  侧边栏导航
+.el-menu-item {
+
+  .modal-menus {
+    background: rgba(0, 0, 0, 0.1);
+    left: 181px;
+
+    .el-drawer__header {
+      margin-bottom: 0;
+    }
+
+    .el-drawer__body {
+      padding-top: 0;
+    }
+  }
+}
+
+.el-table .gray-table-row {
+  background: $baseMenuTextColor;
+}
+
+.el-button--primary {
+  // --el-button-bg-color:$mainColor
+  // background-color: $mainColor;
+}
+
+// 申请服务dialog样式
+.apply-service-dialog-form {
+  .el-dialog__body {
+    padding-top: 10px;
+  }
+
+  .el-radio.el-radio--large {
+    margin-right: 10px;
+  }
+}
+
+.header-w208 {
+  width: calc(100% - 208px);
+  transition: all 0.2s;
+}
+
+.header-w64 {
+  width: calc(100% - 64px);
+  transition: all 0.2s;
+}
+// 弹窗顶部样式
+:deep(.el-dialog__header) {
+  margin-right: 0px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+}
+.el-popper{
+  max-width: 500px;
+}
+.el-table__cell,.el-table__body-wrapper tr td.el-table-fixed-column--left{
+  background-color: #F4F6FA ;
+}
+.el-table__cell,.el-table__body-wrapper tr td.el-table-fixed-column--right{
+  background-color: #F4F6FA ;
+}
+.el-table tr.el-table__row--striped{
+  background-color: white;
+}
+.el-table--striped .el-table__body tr.el-table__row--striped td.el-table__cell{
+  background-color: white;
+
+}
+
+// 表格公共滚动样式
+.view-content {
+  height: calc(100% - 140px);
+  background: #fff;
+  border-radius: 4px;
+  .el-table__inner-wrapper::before{
+    background-color: white;
+  }
+}
+.table-container {
+  height: 100%;
+  :deep(.el-table--fit) {
+    height: calc(100% - 50px);
+    overflow-y: auto;
+  }
+}
+
+.el-dialog__body{
+  border: 1px solid #F2F2F2;
+}
+.el-step__title.is-finish{
+  color:rgba(0, 0, 0, 0.80);
+}
+// step 样式
+.el-step__head.is-finish{
+  color:rgba(0, 0, 0, 0.80);
+
+  border-color:$mainColor;
+  .el-step__icon.is-text{
+    border-color:$mainColor;
+    color:white;
+    background-color: $mainColor;
+  }
+}
+// is-finish
+.el-step__line{
+  background-color:#D9D9D9 ;
+}
+.el-step__head.is-process{
+  border-color:rgba(217, 217, 217, 1);
+  color:rgba(0, 0, 0, 0.30) ;
+}
+.el-step__title{
+  font-size: 14px;
+}
+.el-step__title.is-process{
+  color: rgba(0, 0, 0, 0.30);
+  .el-step__icon.is-text{
+  color: rgba(0, 0, 0, 0.30);
+
+  }
+}
+
+// message box通用样式
+.el-message-box__message {
+  p {
+    word-break: break-all;
+  }
+}
+
+// 表格空项 缺省-
+.el-table .el-table__body td .cell:empty::after,
+.el-table .el-table__body td .cell > span:empty::after,
+.el-table .el-table__body td .cell .approval:empty::after,
+.el-table .el-table__body td .cell div:empty::after,
+.el-table .el-table__body td .cell .line-limit-length:empty::after{
+  content: '-';
+}
+
+// 开关去掉缺省-
+.el-switch__action {
+  &::after {
+    content: '' !important;
+  }
+}

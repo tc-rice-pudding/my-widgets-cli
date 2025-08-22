@@ -1,0 +1,9 @@
+/node_modules
+/dist
+*.html
+/src/assets
+*.less
+*.css
+*.sass
+*.scss
+/src/layout/index.vue

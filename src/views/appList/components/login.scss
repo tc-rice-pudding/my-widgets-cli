@@ -1,0 +1,84 @@
+.login {
+    width: 100%;
+    background: white;
+    position: relative;
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    
+    .logo_login {
+      width: 102px;
+      margin: 20px 40px;
+      display: block;
+    }
+  
+    .login_pic_1 {
+      display: block;
+      width: 90%;
+      margin: 10% auto;
+    }
+
+    .forget_pwd {
+      position: absolute;
+      right: 0;
+      top: -35px;
+      z-index: 999;
+      font-size: 12px;
+      color: #666666;
+      cursor: pointer;
+    }
+    .login_right {
+      // flex: 0.5;
+      width: 70%;
+      height: 600px;
+      border-top-left-radius: 40px;
+      border-bottom-left-radius: 40px;
+      background: #fff;
+      position: relative;
+      .el-tabs__nav{
+          .el-tabs__item{
+             font-size: 16px;
+           }
+      }
+     
+      .login_right_window {
+      
+        padding: 15px;
+        &:deep(.el-input) {
+          height: 45px;
+        }
+     
+        .login-other {
+          width: 100%;
+          display: flex;
+          justify-content: space-around;
+          align-items: start;
+          flex-direction: column;
+          .tip {
+            margin-top: 5px;
+            height: 40px;
+            text-align: left;
+            .remeber_pwd_box {
+              margin-right: 5px;
+            }
+          }
+        }
+        .login_right_window_title {
+          font-size: 20px;
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          color: #333333;
+          text-align: center;
+          padding: 30px;
+          padding-bottom: 0;
+        }
+    }
+      .login-tip {
+        font-size: 10px;
+        text-align: center;
+        color: #c3c3c3;
+      }
+    }
+  }
+  

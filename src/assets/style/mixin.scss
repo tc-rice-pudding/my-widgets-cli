@@ -1,0 +1,70 @@
+@mixin tableContainer {
+  overflow: hidden;
+  // margin-top: 20px;
+  // box-shadow: 0px 12px 48px 16px rgba(0, 0, 0, 0.03);
+  // border-radius: 8px;
+  background: #fff;
+}
+@mixin searchContainer {
+  // padding: 24px 40px 0 0;
+  background: #fff;
+  min-height: 60px;
+  // box-shadow: 0px 12px 48px 16px rgba(0, 0, 0, 0.03);
+  border-radius: 4px;
+  align-items: center;
+  .left-table-filter {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 180px;
+    .el-form {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 16px;
+
+      :deep( .el-form-item--small .el-form-item__label ){
+        min-width: 105px;
+      }
+      .el-form-item {
+        // margin-left: 40px;
+        margin-bottom: 16px;
+        // margin-top: 16px;
+
+        :deep(.el-form-item__content) {
+          min-width: 150px;
+          // max-width: 250px;
+          .el-input__inner {
+            min-width: 150px;
+          }
+        }
+      }
+    }
+   
+  }
+  .right-btn {
+    display: flex;
+    height: 32px;
+    text-align: right;
+    margin-right: 8px;
+
+    position: absolute;
+    top: 16px;
+    right: 4px;
+    
+    .checked-form-btn{
+      color: #216DD9;
+      margin-left: 20px;
+      width: 80px;
+      background-color: white;
+      border: 1px solid #216DD9;
+    }
+    .checked-form-btn:hover{
+      color: #216DD9;
+      background-color: rgba(33, 109, 217, .1) ;
+    }
+  }
+
+  ::v-deep .el-form-item__label {
+    min-width: 70px;
+  }
+}
+  

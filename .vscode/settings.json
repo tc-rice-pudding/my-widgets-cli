@@ -1,0 +1,35 @@
+{
+    "eslint.nodePath": ".yarn/sdks",
+    "npm.packageManager": "yarn",
+    "eslint.autoFixOnSave": true,
+    "eslint.options": {
+        "extensions": [
+            ".js",
+            ".vue"
+        ]
+    },
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "html",
+        {
+            "language": "vue",
+            "autoFix": true
+        }
+    ],
+    "breadcrumbs.enabled": true,
+    "window.zoomLevel": 0,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    },
+    //单双引号
+    "prettier.semi": true,
+    "prettier.singleQuote": false,
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "cSpell.words": [
+        "introductionuction"
+    ],
+    "typescript.tsdk": "node_modules/typescript/lib",
+}

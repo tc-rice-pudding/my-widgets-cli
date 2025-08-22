@@ -1,0 +1,89 @@
+<template>
+  <div class="warp-demo-view">
+    <el-scrollbar height="100%">
+      <el-row :gutter="20">
+        <el-col :span="6">
+          <warp title="柱状图-tootip在容器内">
+            <template #btn>
+              <el-button type="primary" plain size="small">插槽</el-button>
+            </template>
+            <pie1 />
+          </warp>
+        </el-col>
+        <el-col :span="8">
+          <warp title="title">
+          </warp>
+        </el-col>
+        <el-col :span="10">
+          <warp title="title" />
+        </el-col>
+      </el-row>
+      <el-row :gutter="20">
+        <el-col :span="10">
+          <warp title="折线图">
+            <line1 />
+          </warp>
+        </el-col>
+        <el-col :span="4">
+          <warp title="title">
+          </warp>
+        </el-col>
+        <el-col :span="10">
+          <warp title="title" />
+        </el-col>
+      </el-row>
+      <el-row :gutter="20">
+        <el-col :span="10">
+          <warp title="柱状图">
+            <bar1 />
+          </warp>
+        </el-col>
+        <el-col :span="4">
+          <warp title="title">
+          </warp>
+        </el-col>
+        <el-col :span="10">
+          <warp title="title" />
+        </el-col>
+      </el-row>
+      <el-row :gutter="20" style="height: 300px;">
+        <el-col :span="6">
+          <warp title="词云">
+            <wordCloud />
+          </warp>
+        </el-col>
+        <el-col :span="8">
+          <warp title="title" />
+        </el-col>
+        <el-col :span="10">
+          <warp title="title" />
+        </el-col>
+      </el-row>
+    </el-scrollbar>
+  </div>
+</template>
+
+<script setup lang='ts'>
+import warp from '@/views/widgets/warpDemo/components/warp.vue';
+import pie1 from './components/pie1.vue';
+import line1 from './components/line1.vue';
+import bar1 from './components/bar1.vue';
+import wordCloud from './components/wordCloud.vue';
+</script>
+
+<style scoped lang='scss'>
+.warp-demo-view {
+  width: 100%;
+  height: calc(100% - 20px);
+  box-sizing: border-box;
+  margin-top: 20px;
+
+  :deep .el-row {
+    margin: 0 0 20px !important;
+  }
+
+  :deep .el-row:last-child {
+    margin-bottom: 0;
+  }
+}
+</style>
