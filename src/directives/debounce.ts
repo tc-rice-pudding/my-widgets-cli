@@ -10,7 +10,7 @@ const vDebounce: Directive = {
     const defaultEvent = "click";
     const defaultDelay = 500;
     const options: DebounceOptions = {
-      event: binding.arg || defaultEvent,
+      event: binding.arg?.split("_")?.[0] ?? defaultEvent,
       delay: binding.arg ? parseInt(binding.arg.split("_")[1]) : defaultDelay,
     };
 

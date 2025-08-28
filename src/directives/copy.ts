@@ -17,7 +17,11 @@ const vCopy: Directive = {
       );
 
       el._clipboardInstance?.on("success", (e) => {
-        ElMessage.success("复制成功");
+        ElMessage({
+          message: "复制成功...",
+          grouping: true,
+          type: "success",
+        });
         el._clipboardInstance?.destroy(); // 释放内存
       });
       el._clipboardInstance?.on("error", (e) => {

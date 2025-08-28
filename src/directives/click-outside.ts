@@ -1,7 +1,7 @@
 import type { Directive, DirectiveBinding } from "vue";
 
 interface ClickOutsideBinding extends DirectiveBinding {
-  value: (e: Event) => void;
+  value: (e: Event) => void; // 回调函数
 }
 
 const vClickOutside: Directive = {

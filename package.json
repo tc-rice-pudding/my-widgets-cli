@@ -17,8 +17,10 @@
     "echarts": "^5.4.1",
     "pinia": "^2.0.33",
     "pinia-plugin-persist": "^1.0.0",
+    "screenfull": "^6.0.2",
     "sm-crypto": "^0.3.12",
     "terser": "^5.16.8",
+    "tippy.js": "^6.3.7",
     "vue": "^3.2.45"
   },
   "devDependencies": {

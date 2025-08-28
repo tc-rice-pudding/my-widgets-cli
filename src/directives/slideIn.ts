@@ -1,6 +1,6 @@
 import type { Directive, DirectiveBinding } from "vue";
 
-const DISTANCE = 200;
+const DISTANCE = 100;
 const DURATION = 500;
 
 const map = new WeakMap();
@@ -42,8 +42,8 @@ const slideIn: Directive = {
       }
     );
     map.set(el, animation);
-    animation.pause();
     ob.observe(el);
+    animation.pause();
   },
   unmounted(el: HTMLElement) {
     ob.unobserve(el);

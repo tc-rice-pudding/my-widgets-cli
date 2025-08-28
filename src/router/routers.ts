@@ -59,6 +59,27 @@ const routes: Array<RouteRecordRaw> = [
     ],
   },
   {
+    path: "/directiveDemo",
+    component: Layout,
+    name: "directiveDemo",
+    meta: {
+      title: "directiveDemo",
+      affix: true,
+    },
+    icon: "icon-ren",
+    children: [
+      {
+        path: "/directiveDemo",
+        name: "directiveDemo",
+        component: () => import("@/views/widgets/directiveDemo/index.vue"),
+        meta: {
+          affix: true,
+          title: "warp",
+        },
+      },
+    ],
+  },
+  {
     path: "/partialDemo",
     component: Layout,
     name: "partial",
@@ -96,27 +117,6 @@ const routes: Array<RouteRecordRaw> = [
         meta: {
           affix: true,
           title: "echarts",
-        },
-      },
-    ],
-  },
-  {
-    path: "/warpDemo",
-    component: Layout,
-    name: "warp",
-    meta: {
-      title: "warp",
-      affix: true,
-    },
-    icon: "icon-ren",
-    children: [
-      {
-        path: "/warpDemo",
-        name: "warpDemo",
-        component: () => import("@/views/widgets/warpDemo/index.vue"),
-        meta: {
-          affix: true,
-          title: "warp",
         },
       },
     ],

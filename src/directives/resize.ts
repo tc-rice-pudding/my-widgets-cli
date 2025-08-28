@@ -5,7 +5,7 @@ interface ResizeObserverEntry {
   contentRect: DOMRectReadOnly;
 }
 interface ResizeDirectiveBinding extends DirectiveBinding {
-  value: (entry: ResizeObserverEntry) => void;
+  value: (entry: ResizeObserverEntry, el: HTMLElement) => void;
 }
 
 function checkResize(entry: ResizeObserverEntry) {
@@ -31,7 +31,7 @@ const vResize: Directive = {
         console.log("新尺寸:", entry.contentRect.width, entry.contentRect.height);
 
         if (!checkResize(entry) && typeof binding.value == "function") {
-          binding.value(entry);
+          binding.value(entry, el);
         }
       }
     });
