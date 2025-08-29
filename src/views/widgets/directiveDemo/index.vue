@@ -180,7 +180,6 @@ setTimeout(() => {
   row.value.text = "春眠不觉晓，处处闻啼鸟。夜来风雨声，花落知多少。";
 }, 1000);
 const resizeHandler = (entry, el, item, field) => {
-  debugger;
   if (item && el) {
     item[field] = el.scrollWidth > el.offsetWidth;
   }

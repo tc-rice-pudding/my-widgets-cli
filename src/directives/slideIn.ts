@@ -1,6 +1,6 @@
 import type { Directive, DirectiveBinding } from "vue";
 
-const DISTANCE = 100;
+const DISTANCE = 200;
 const DURATION = 500;
 
 const map = new WeakMap();
