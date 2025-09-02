@@ -10,7 +10,8 @@ export type FieldType =
   | "radio"
   | "date"
   | "time"
-  | "datetime";
+  | "datetime"
+  | "map";
 
 // 字段选项
 export interface FieldOption {
