@@ -8,7 +8,7 @@ export const checkMapEmpty = (
 ) => {
   if (value.length == 0) {
     callback(new Error(`${fieldSchema.label}不能为空`));
-  } else if (value.filter((it) => it.key != "").length == 0) {
+  } else if (value.some((it) => it.key == "")) {
     callback(new Error(`${fieldSchema.label}key值不能为空`));
   } else {
     callback();
