@@ -1,6 +1,8 @@
-import { length } from "@antv/x6/lib/registry/edge-anchor/length";
 import { FormField } from "../formTypes";
 
+const generatUnitName = (fieldName) =>
+  `${fieldName}__${Math.random().toString(36).substring(2, 15)}`;
+const removeUniqueName = (unitName) => unitName.split("__")[0];
 /**
  * 将接口 schema 转换为内部 schema
  * @param fieldList
@@ -8,9 +10,11 @@ import { FormField } from "../formTypes";
  * @param conditions
  */
 export const transformToNativeSchema = (fieldList, res, conditions = {}) => {
+  if(!Array.isArray(fieldList)) return;
   fieldList.forEach((it) => {
+    it.unitName = generatUnitName(it.name);
     res.push({
-      name: it.name,
+      name: it.unitName,
       label: it.label,
       type: it.type,
       required: it.required,
@@ -22,7 +26,7 @@ export const transformToNativeSchema = (fieldList, res, conditions = {}) => {
       it.options.forEach((child) => {
         if (child.fields) {
           transformToNativeSchema(child.fields, res, {
-            field: it.name,
+            field: it.unitName,
             operator: "==",
             value: child.value,
           });
@@ -38,8 +42,9 @@ export const transformToApiSchema = (
   formData: Object,
   opsChecked: boolean = true
 ) => {
+  if(!Array.isArray(fieldList)) return;
   fieldList.forEach((it) => {
-    it.value = opsChecked ? formData[it.name] : null;
+    it.value = opsChecked ? formData[it.unitName] : null;
 
     if (it.dataType === "object") {
       it.options.forEach((child) => {

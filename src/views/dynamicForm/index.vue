@@ -152,7 +152,7 @@ const submitHandler = (formData) => {
 onMounted(() => {
   setTimeout(() => {
     formSchema.value = [];
-    transformToNativeSchema(cloneDeep(schemeDemo), formSchema.value);
+    transformToNativeSchema(schemeDemo, formSchema.value);
     console.log("Transformed Form Schema:", formSchema.value);
   }, 100);
 });

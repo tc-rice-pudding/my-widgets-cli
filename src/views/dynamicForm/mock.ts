@@ -101,6 +101,15 @@ export const schemeDemo = [
     value: "30000",
   },
   {
+    name: "requestTimeout",
+    label: "请求超时22",
+    required: false,
+    type: "input",
+    dataType: "number",
+    defaultVal: "",
+    value: "",
+  },
+  {
     name: "credential",
     label: "身份验证",
     required: true,
@@ -138,6 +147,7 @@ export const schemeDemo = [
             type: "input",
             dataType: "string",
             defaultVal: null,
+            value: "222"
           },
           {
             name: "password",
@@ -147,6 +157,7 @@ export const schemeDemo = [
             dataType: "string",
             defaultVal: null,
             crypto: "rsa",
+            value: "password111",
           },
           {
             name: "crtPath",
@@ -179,6 +190,7 @@ export const schemeDemo = [
             dataType: "string",
             defaultVal: null,
             crypto: "rsa",
+            value: "",
           },
           {
             name: "fingerprint",
