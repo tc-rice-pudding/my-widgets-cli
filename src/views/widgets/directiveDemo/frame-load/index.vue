@@ -1,6 +1,6 @@
 <template>
     <div class="frame-load-container">
-        <div style="height: 600px;"></div>
+        <div style="height: 100px;">这是内容</div>
         <!-- 使用自定义指令 -->
         <div v-frame-load="frameLoadOptions" class="component-wrapper"></div>
     </div>

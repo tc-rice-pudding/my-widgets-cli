@@ -55,7 +55,7 @@
       </el-col>
     </el-row>
     <el-row :gutter="20">
-      <el-col :span="4">
+      <el-col :span="6">
         <warp title="v-click-outside 指令">
           <template #default>
             <!-- FIXME: 示例代码 -->
@@ -81,7 +81,7 @@
           </template>
         </warp>
       </el-col>
-      <el-col :span="4">
+      <el-col :span="6">
         <warp title="v-copy 指令">
           <template #default>
             <!-- FIXME: 示例代码 -->
@@ -91,7 +91,7 @@
           </template>
         </warp>
       </el-col>
-      <el-col :span="4">
+      <el-col :span="6">
         <warp title="v-debounce 指令">
           <template #default>
             <!-- FIXME: 示例代码 -->
@@ -104,7 +104,7 @@
           </template>
         </warp>
       </el-col>
-      <el-col :span="4">
+      <el-col :span="6">
         <warp title="v-draggable 指令">
           <template #default>
             <!-- FIXME: 示例代码 -->
@@ -112,8 +112,10 @@
           </template>
         </warp>
       </el-col>
-      <el-col :span="4">
-        <warp title="v-resize 指令">
+    </el-row>
+    <el-row :gutter="20">
+      <el-col :span="6">
+        <warp title="v-resize v-ellipsis 实现自动 tooltip">
           <template #default>
             <!-- FIXME: 示例代码 -->
             <el-tooltip
@@ -136,7 +138,7 @@
           </template>
         </warp>
       </el-col>
-      <el-col :span="4">
+      <el-col :span="6">
         <warp title="v-screenfull 指令">
           <template #default>
             <!-- FIXME: 示例代码 -->
@@ -154,9 +156,7 @@
           </template>
         </warp>
       </el-col>
-    </el-row>
-    <el-row :gutter="20">
-      <el-col :span="4">
+      <el-col :span="6">
         <warp title="v-focus 指令">
           <template #default>
             <el-input placeholder="请输入内容" v-focus />
@@ -166,9 +166,18 @@
     </el-row>
     <el-row :gutter="20">
       <el-col :span="24">
-        <warp title="v-frame-load">
+        <warp title="v-frame-load 指令，多组件懒加载+分帧加载">
           <template #default>
             <FrameLoad style="height: 800px;"/>
+          </template>
+        </warp>
+      </el-col>
+    </el-row>
+    <el-row :gutter="20">
+      <el-col :span="24">
+        <warp title="v-infinite-scroll 指令，无限滚动示例">
+          <template #default>
+            <InfiniteScroll style="height: 400px;"/>
           </template>
         </warp>
       </el-col>
@@ -180,6 +189,7 @@
 import warp from "@/views/widgets/warpDemo/components/warp.vue";
 import { ElMessage } from "element-plus";
 import FrameLoad from "./frame-load/index.vue";
+import InfiniteScroll from './infinite-scroll/index.vue';
 
 const row = ref({ text: "" });
 setTimeout(() => {

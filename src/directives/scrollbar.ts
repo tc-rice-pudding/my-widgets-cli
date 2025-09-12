@@ -109,7 +109,7 @@ const generateStyle = (
     }`;
     styleContent += `.${uniqueClass}:hover {
       scrollbar-width: thin;
-      scrollbar-color: #c1c1c1 transparent;
+      scrollbar-color: #d6d8dd transparent;
     }`;
   }
 
