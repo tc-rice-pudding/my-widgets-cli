@@ -4,7 +4,7 @@
       <span>{{ props?.title ?? '' }}</span>
       <slot name="btn" />
     </div>
-    <section>
+    <section v-scrollbar>
       <slot />
     </section>
   </div>

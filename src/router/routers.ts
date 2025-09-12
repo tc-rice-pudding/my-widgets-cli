@@ -163,5 +163,26 @@ const routes: Array<RouteRecordRaw> = [
       },
     ],
   },
+  {
+    path: "/tableDemo",
+    component: Layout,
+    name: "表格",
+    meta: {
+      title: "表格",
+      affix: true,
+    },
+    icon: "icon-ren",
+    children: [
+      {
+        path: "/tableDemo",
+        name: "tableDemo", // 这里如果是home 就代表是一级菜单，不添加面包屑导航
+        component: () => import("@/views/widgets/tableDemo/index.vue"),
+        meta: {
+          affix: true,
+          title: "表格",
+        },
+      },
+    ],
+  },
 ];
 export default routes;

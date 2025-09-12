@@ -8,11 +8,7 @@
         <warp title="v-scrollbar 指令">
           <template #default>
             <!-- FIXME: 示例代码 -->
-            <div
-              style="height: 300px"
-              v-scrollbar
-              v-infinite-scroll="() => ElMessage.info('滚动了')"
-            >
+            <div style="height: 300px">
               <div
                 style="
                   height: 1000px;
@@ -168,12 +164,22 @@
         </warp>
       </el-col>
     </el-row>
+    <el-row :gutter="20">
+      <el-col :span="24">
+        <warp title="v-frame-load">
+          <template #default>
+            <FrameLoad style="height: 800px;"/>
+          </template>
+        </warp>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
 <script setup lang='ts'>
 import warp from "@/views/widgets/warpDemo/components/warp.vue";
 import { ElMessage } from "element-plus";
+import FrameLoad from "./frame-load/index.vue";
 
 const row = ref({ text: "" });
 setTimeout(() => {

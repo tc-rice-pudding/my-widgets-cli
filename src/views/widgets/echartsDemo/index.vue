@@ -7,7 +7,7 @@
             <template #btn>
               <el-button type="primary" plain size="small">插槽</el-button>
             </template>
-            <pie1 />
+            <c.pie1 />
           </warp>
         </el-col>
         <el-col :span="8">
@@ -21,7 +21,7 @@
       <el-row :gutter="20">
         <el-col :span="10">
           <warp title="折线图">
-            <line1 />
+            <c.line1 />
           </warp>
         </el-col>
         <el-col :span="4">
@@ -35,7 +35,7 @@
       <el-row :gutter="20">
         <el-col :span="10">
           <warp title="柱状图">
-            <bar1 />
+            <c.bar1 />
           </warp>
         </el-col>
         <el-col :span="4">
@@ -49,7 +49,7 @@
       <el-row :gutter="20" style="height: 300px;">
         <el-col :span="6">
           <warp title="词云">
-            <wordCloud />
+            <c.wordCloud />
           </warp>
         </el-col>
         <el-col :span="8">
@@ -65,10 +65,7 @@
 
 <script setup lang='ts'>
 import warp from '@/views/widgets/warpDemo/components/warp.vue';
-import pie1 from './components/pie1.vue';
-import line1 from './components/line1.vue';
-import bar1 from './components/bar1.vue';
-import wordCloud from './components/wordCloud.vue';
+import c from './components';
 </script>
 
 <style scoped lang='scss'>

@@ -2,10 +2,9 @@
   <el-form
     ref="ruleFormRef"
     :model="formData"
-    label-position="left"
-    label-width="100px"
     :scroll-to-error="true"
     class="dynamic-form"
+    v-bind="props.elFormAttrs"
   >
     <el-form-item
       v-for="field in visibleFields"
@@ -37,6 +36,10 @@ import { getValidationRules } from "../utils/formRules";
 import FormField from "./FormField.vue";
 
 const props = defineProps<{
+  elFormAttrs: {
+    type: any;
+    default: () => { "label-width": "200px"; "label-position": "left" };
+  };
   formSchema: FormFieldType[];
 }>();
 
@@ -62,19 +65,31 @@ const visibleFields = computed(() =>
   )
 );
 
-// 表单提交
-const handleSubmit = async () => {
-  // 验证所有可见字段
-  if (!ruleFormRef.value) return;
-  ruleFormRef.value.validate((valid) => {
-    if (valid) {
-      console.log("表单提交成功:", formData.value);
-      emit("submit", formData.value);
-    } else {
-      ElMessage.error("表单验证失败");
-    }
+// 验证所有可见字段
+const validateHandler: () => Promise<Boolean> = async () => {
+  return new Promise((resolve, reject) => {
+    ruleFormRef.value?.validate((valid) => {
+      if (valid) {
+        console.log("表单提交成功:", formData.value);
+        resolve(true);
+      } else {
+        ElMessage.error("表单验证失败");
+        resolve(false);
+      }
+    });
   });
 };
+
+// 表单提交
+const handleSubmit = () =>
+  new Promise(async (resolve, reject) => {
+    const validateFlag = await validateHandler();
+    if (validateFlag) {
+      resolve(formData.value);
+    } else {
+      reject("表单验证失败");
+    }
+  });
 
 watch(
   () => props.formSchema,
@@ -100,6 +115,7 @@ watch(
 defineExpose({
   ruleFormRef,
   formData,
+  validateHandler,
   handleSubmit,
 });
 </script>

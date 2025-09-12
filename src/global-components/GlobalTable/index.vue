@@ -9,6 +9,7 @@
       :row-key="props.rowKey"
       :border="props.border"
       :stripe="props.stripe"
+      @sort-change="sortChange"
       @selection-change="handleSelectionChange"
       @select-all="handleSelectAll"
       @filter-change="handleFilterChange"
@@ -129,6 +130,7 @@ import { ElTable } from "element-plus";
 const slots = useSlots();
 
 const emit = defineEmits([
+  "sortChange",
   "sizeChange",
   "pageChange",
   "selectChange",
@@ -233,6 +235,9 @@ watch(
     immediate: true,
   }
 );
+const sortChange = (data) => {
+  emit("sortChange", data);
+};
 const handlePageSizeChange = (val: number) => {
   emit("sizeChange", val);
 };

@@ -3,14 +3,8 @@
     <h1>动态表单演示</h1>
     <section style="height: calc(100% - 50px)">
       <el-scrollbar>
-        <DynamicForm
-          ref="dynamicFormRef"
-          :formSchema="formSchema"
-          @submit="submitHandler"
-        />
-        <el-button type="primary" @click="dynamicFormRef?.handleSubmit"
-          >提交</el-button
-        >
+        <DynamicForm ref="dynamicFormRef" :formSchema="formSchema" />
+        <el-button type="primary" @click="submitHandler">提交</el-button>
       </el-scrollbar>
       <el-scrollbar>
         <el-card class="form-data">
@@ -140,7 +134,9 @@ const formSchema = ref<FormField[]>([
   //   },
 ]);
 
-const submitHandler = (formData) => {
+const submitHandler = async () => {
+  const formData = await dynamicFormRef.value?.handleSubmit();
+
   ElMessage.success("表单提交成功! 查看控制台输出数据!");
   // 这里可以进行进一步的处理，比如发送到服务器等
 
