@@ -8,7 +8,7 @@ export const columns = [
   {
     label: "名称",
     "min-width": 200,
-    prop: "name",
+    tdSlot: "name",
     showTooltip: true,
   },
   {

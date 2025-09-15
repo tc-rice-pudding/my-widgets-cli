@@ -23,24 +23,16 @@
       </template>
     </GlobalContentTitle>
 
-    <GlobalTableForm
-      ref="formConditionRef"
-      :formFieldsOptions="searchForm"
-      @tableReset="tableFilter"
-      @tableFilter="tableFilter"
-    />
+    <GlobalTableForm ref="formConditionRef" :formFieldsOptions="searchForm" @tableReset="tableFilter"
+      @tableFilter="tableFilter" />
 
-    <GlobalTable
-      v-model:pagination="state.pagination"
-      :columns="columns"
-      :border="false"
-      :table-data="state.tableData"
-      :loading="state.loading"
-      @sortChange="tableOperMap.sortChange"
-      @size-change="sizeChange"
-      @page-change="pageChange"
-      @selectChange="tableOperMap.selectChange"
-    >
+    <GlobalTable v-model:pagination="state.pagination" :columns="columns" :border="false" :table-data="state.tableData"
+      :loading="state.loading" @sortChange="tableOperMap.sortChange" @size-change="sizeChange" @page-change="pageChange"
+      @selectChange="tableOperMap.selectChange">
+      <template #name="{ row }">
+        <!-- 状态组件 -->
+        <w.copyWidget :row="row" field="name" />
+      </template>
       <template #stat="{ row }">
         <!-- 状态组件 -->
         <w.statusWidget :code="row.stat" :label="statusEnum[row.stat]" />
@@ -48,40 +40,24 @@
 
       <template #flowStatus="{ row }">
         <!-- 状态组件 -->
-        <w.switchWidget
-          :row="row"
-          field="flowStatus"
-          @changeCB="onTableSearch"
-        />
+        <w.switchWidget :row="row" field="flowStatus" @changeCB="onTableSearch" />
       </template>
 
       <template #typeLabel="{ row, column }">
         <!-- 表头过滤 -->
-        <w.filterWidget
-          v-model:filterList="state.types"
-          :filterData="state.typeFilterData"
-          :title="column.label"
-          @onFilter="onTableSearch"
-        />
+        <w.filterWidget v-model:filterList="state.types" :filterData="state.typeFilterData" :title="column.label"
+          @onFilter="onTableSearch" />
       </template>
       <template #statLabel="{ row, column }">
         <!-- 表头过滤 -->
-        <w.filterWidget
-          v-model:filterList="state.stats"
-          :filterData="state.statFilterData"
-          :title="column.label"
-          @onFilter="onTableSearch"
-        />
+        <w.filterWidget v-model:filterList="state.stats" :filterData="state.statFilterData" :title="column.label"
+          @onFilter="onTableSearch" />
       </template>
 
       <template #default="{ row }">
         <div class="btnBox">
-          <el-button text link type="primary" @click="tableOperMap.onEdit(row)"
-            >编辑</el-button
-          >
-          <el-button text link type="danger" @click="tableOperMap.onDel(row)"
-            >删除</el-button
-          >
+          <el-button text link type="primary" @click="tableOperMap.onEdit(row)">编辑</el-button>
+          <el-button text link type="danger" @click="tableOperMap.onDel(row)">删除</el-button>
         </div>
       </template>
     </GlobalTable>
@@ -153,7 +129,7 @@ const getTableList = async () => {
 
   state.loading = false;
   state.tableData = [
-    { stat: 1, flowStatus: 1 },
+    { name:'121222222222212122222222221212222222222',stat: 1, flowStatus: 1 },
     { stat: 0, flowStatus: 0 },
     { stat: 0, flowStatus: 1 },
     { stat: 1, flowStatus: 1 },
@@ -170,9 +146,9 @@ const tableFilter = (_params) => {
     ..._params,
     ...(_params.timeRange?.length
       ? {
-          startTime: _params.timeRange[0],
-          endTime: _params.timeRange[1],
-        }
+        startTime: _params.timeRange[0],
+        endTime: _params.timeRange[1],
+      }
       : {}),
   };
   delete state.params.timeRange;
@@ -212,6 +188,13 @@ onMounted(onTableSearch);
   :deep .table-container {
     height: calc(100% - 48px - 64px - 20px);
     margin-top: 20px;
+  }
+
+  :deep .search-container {
+    label {
+      width: auto !important;
+      min-width: unset !important;
+    }
   }
 }
 </style>
