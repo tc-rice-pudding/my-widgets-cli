@@ -21,6 +21,7 @@
     "echarts": "^5.4.1",
     "pinia": "^2.0.33",
     "pinia-plugin-persist": "^1.0.0",
+    "postcss-px-to-viewport-8-plugin": "^1.2.5",
     "screenfull": "^6.0.2",
     "sm-crypto": "^0.3.12",
     "terser": "^5.16.8",

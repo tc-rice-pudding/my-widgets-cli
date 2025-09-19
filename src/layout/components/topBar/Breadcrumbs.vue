@@ -88,7 +88,6 @@ export default defineComponent({
   overflow: hidden;
   text-overflow: ellipsis;
   height: 48px;
-  height: 48px;
   background: #ffffff;
   line-height: 48px;
   padding-left: 16px;

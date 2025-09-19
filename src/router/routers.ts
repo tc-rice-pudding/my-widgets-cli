@@ -184,5 +184,26 @@ const routes: Array<RouteRecordRaw> = [
       },
     ],
   },
+  {
+    path: "/adaptScreenDemo",
+    component: Layout,
+    name: "大屏自适应",
+    meta: {
+      title: "大屏自适应",
+      affix: true,
+    },
+    icon: "icon-ren",
+    children: [
+      {
+        path: "/adaptScreenDemo",
+        name: "adaptScreenDemo", // 这里如果是home 就代表是一级菜单，不添加面包屑导航
+        component: () => import("@/views/widgets/adaptScreenDemo/index.vue"),
+        meta: {
+          affix: true,
+          title: "大屏自适应",
+        },
+      },
+    ],
+  },
 ];
 export default routes;
