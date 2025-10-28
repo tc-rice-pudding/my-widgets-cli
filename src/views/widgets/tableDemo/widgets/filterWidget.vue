@@ -3,7 +3,7 @@
     <span>
       {{ props.title }}
     </span>
-    <el-icon class="icon-container" size="14px" @click="open">
+    <el-icon :class="['icon-container', props.filterList?.length && 'active']" size="14px" @click="open">
       <Filter />
     </el-icon>
     <el-dialog
@@ -128,6 +128,9 @@ defineExpose({ resetFilter });
   align-items: center;
   cursor: pointer;
   column-gap: 4px;
+  .active{
+    color: var(--el-color-primary);
+  }
 }
 
 :deep .custom-table {

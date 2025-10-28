@@ -6,18 +6,9 @@
         {{ item }}
       </el-radio>
     </el-radio-group>
-    <el-date-picker
-      v-model="state.query.range"
-      :disabled="state.query.timeType != '自定义'"
-      type="daterange"
-      range-separator="至"
-      start-placeholder="开始时间"
-      end-placeholder="结束时间"
-      :disabled-date="disabledDate"
-      :popper-append-to-body="false"
-      :append-to-body="false"
-      popper-class="custom-video-popper"
-    />
+    <el-date-picker v-model="state.query.range" :disabled="state.query.timeType != '自定义'" type="daterange"
+      range-separator="-" start-placeholder="开始时间" end-placeholder="结束时间" :disabled-date="disabledDate"
+      :popper-append-to-body="false" :append-to-body="false" popper-class="custom-timepick-popper" />
   </div>
 </template>
 
@@ -37,8 +28,8 @@ const emit = defineEmits(["update:timeRange"]);
 
 const state = reactive({
   query: {
-    ops: ["全部", "近一个月", "近一周", "自定义"],
-    timeType: "全部",
+    ops: ["7天", "3个月", "近半年", "近一年", "自定义"],
+    timeType: "7天",
     range: [] as any[],
   },
 });
@@ -48,12 +39,13 @@ const getRangeTime = (dayRange: number, nowTime = new Date()) => [
   dayjs(nowTime),
 ];
 
-const handlerMap = {
-  全部: () => [],
-  近一个月: () => getRangeTime(30),
-  近一周: () => getRangeTime(7),
-  自定义: () => state.query.range,
-};
+const getHandlerMap = () => ({
+  '7天': () => getRangeTime(7),
+  '3个月': () => getRangeTime(90),
+  '近半年': () => getRangeTime(180),
+  '近一年': () => getRangeTime(365),
+  '自定义': () => [...state.query.range],
+});
 
 const disabledDate = (time) => {
   if (props.limitDays > 0) {
@@ -74,38 +66,56 @@ const disabledDate = (time) => {
   }
 };
 
-watchEffect(() => {
-  state.query.range = handlerMap[state.query.timeType]();
+// 提取公共的 emit 逻辑
+const emitTimeRange = () => {
   const rangeTime = state.query.range;
-
   if (rangeTime?.length && props.format?.length) {
     const [startFormat, endFormat] = props.format;
-    rangeTime[0] = dayjs(rangeTime[0]).format(startFormat);
-    rangeTime[1] = dayjs(rangeTime[1]).format(endFormat ?? startFormat);
+    const formatted = [
+      dayjs(rangeTime[0]).format(startFormat),
+      dayjs(rangeTime[1]).format(endFormat ?? startFormat)
+    ];
+    emit("update:timeRange", formatted);
   }
-  emit("update:timeRange", rangeTime);
-});
+};
+
+// 监听时间类型变化
+watch(() => state.query.timeType, (newType) => {
+  if (newType !== '自定义') {
+    state.query.range = getHandlerMap()[newType]();
+    emitTimeRange();
+  }
+}, { immediate: true });
+
+// 监听自定义日期范围变化
+watch(() => state.query.range, () => {
+  if (state.query.timeType === '自定义') {
+    emitTimeRange();
+  }
+}, { deep: true });
+
 </script>
 
 <style scoped lang='scss'>
 .time-pick-container {
-  display: grid;
+  display: flex;
   grid-template-columns: auto auto 1fr;
   align-items: center;
-  justify-content: flex-start;
   overflow: inherit !important;
-  height: 56px;
-  background: #ffffff;
-  border-radius: 4px;
-  > span {
+  background: transparent;
+  justify-content: center;
+
+  >span {
     font-weight: 400;
     font-size: 14px;
   }
+
   :deep .el-radio-group {
     .el-radio {
       margin-right: 20px;
     }
   }
+
   :deep .el-date-editor {
     max-width: 240px;
   }

@@ -30,26 +30,20 @@
         </el-col>
       </el-row>
       <el-row :gutter="20" style="height: 200px">
-        <el-col :span="4">
+        <el-col :span="10">
           <warp title="有限状态机demo">
             <p.trafficLight />
           </warp>
         </el-col>
         <el-col :span="8">
-          <warp title="title">
+          <warp title="TOP 排行">
+            <p.order />
           </warp>
         </el-col>
-        <el-col :span="4">
-          <warp title="title" />
-        </el-col>
-        <el-col :span="4">
-          <warp title="title" />
-        </el-col>
-        <el-col :span="4">
-          <warp title="title" />
-        </el-col>
-        <el-col :span="4">
-          <warp title="title" />
+        <el-col :span="6">
+          <warp title="TOP 排行">
+            <p.top />
+          </warp>
         </el-col>
       </el-row>
     </el-scrollbar>
