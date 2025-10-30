@@ -18,7 +18,7 @@ interface Props {
   pgEndColor?: string; // 进度渐变色 end
   label: string; // label 名称
   percentage: number; // 进度值
-  percentageSlot: string; // 进度值插槽
+  percentageSlot?: string; // 进度值插槽
   order: number; // 排序
   orderBgColor?: string; // 排序背景色
   orderColor?: string; // 排序颜色

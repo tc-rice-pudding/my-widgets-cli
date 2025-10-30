@@ -29,7 +29,7 @@
           </warp>
         </el-col>
       </el-row>
-      <el-row :gutter="20" style="height: 200px">
+      <el-row :gutter="20">
         <el-col :span="10">
           <warp title="有限状态机demo">
             <p.trafficLight />
@@ -43,6 +43,25 @@
         <el-col :span="6">
           <warp title="TOP 排行">
             <p.top />
+          </warp>
+        </el-col>
+      </el-row>
+      <el-row :gutter="20" style="height: 200px">
+        <el-col :span="6">
+          <warp title="总览">
+            <p.overview />
+          </warp>
+        </el-col>
+        <el-col :span="6">
+          <warp title="title">
+          </warp>
+        </el-col>
+        <el-col :span="6">
+          <warp title="title">
+          </warp>
+        </el-col>
+        <el-col :span="6">
+          <warp title="title">
           </warp>
         </el-col>
       </el-row>
