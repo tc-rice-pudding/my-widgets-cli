@@ -56,7 +56,8 @@
 
       <template #default="{ row }">
         <div class="btnBox">
-          <el-button text link type="primary" @click="tableOperMap.onEdit(row)">编辑</el-button>
+          <el-button text link type="primary" @click="tableOperMap.onEditDrawer(row)">编辑抽屉</el-button>
+          <el-button text link type="primary" @click="tableOperMap.onEditDialog(row)">编辑弹窗</el-button>
           <el-button text link type="danger" @click="tableOperMap.onDel(row)">删除</el-button>
         </div>
       </template>
@@ -64,6 +65,7 @@
 
     <c.delDialog :ref="compRefs.delDialogRef" />
     <c.detailDrawer :ref="compRefs.detailDrawerRef" />
+    <c.detailDialog :ref="compRefs.detailDialogRef" />
   </div>
 </template>
 
@@ -129,7 +131,7 @@ const getTableList = async () => {
 
   state.loading = false;
   state.tableData = [
-    { name:'121222222222212122222222221212222222222',stat: 1, flowStatus: 1 },
+    { name: '121222222222212122222222221212222222222', stat: 1, flowStatus: 1 },
     { stat: 0, flowStatus: 0 },
     { stat: 0, flowStatus: 1 },
     { stat: 1, flowStatus: 1 },
@@ -164,9 +166,13 @@ const tableOperMap = {
   selectChange: (val) => {
     state.tableSelectList = val;
   },
-  onEdit: (row) => {
+  onEditDrawer: (row) => {
     console.log("onEdit");
     compRefs.detailDrawerRef.value?.open(row);
+  },
+  onEditDialog: (row) => {
+    console.log("onEdit");
+    compRefs.detailDialogRef.value?.open(row);
   },
   onDel: (row?) => {
     compRefs.delDialogRef.value?.open(row);
