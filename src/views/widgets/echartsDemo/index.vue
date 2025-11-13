@@ -3,7 +3,7 @@
     <el-scrollbar height="100%">
       <el-row :gutter="20">
         <el-col :span="6">
-          <warp title="柱状图-tootip在容器内">
+          <warp title="饼图-tootip在容器内">
             <template #btn>
               <el-button type="primary" plain size="small">插槽</el-button>
             </template>
@@ -11,7 +11,8 @@
           </warp>
         </el-col>
         <el-col :span="8">
-          <warp title="title">
+          <warp title="仪表盘">
+            <c.gauge1 />
           </warp>
         </el-col>
         <el-col :span="10">
@@ -24,12 +25,10 @@
             <c.line1 />
           </warp>
         </el-col>
-        <el-col :span="4">
-          <warp title="title">
+        <el-col :span="14">
+          <warp title="面积图">
+            <c.line2 />
           </warp>
-        </el-col>
-        <el-col :span="10">
-          <warp title="title" />
         </el-col>
       </el-row>
       <el-row :gutter="20">
@@ -38,12 +37,10 @@
             <c.bar1 />
           </warp>
         </el-col>
-        <el-col :span="4">
-          <warp title="title">
+        <el-col :span="14">
+          <warp title="柱状图">
+            <c.bar2 />
           </warp>
-        </el-col>
-        <el-col :span="10">
-          <warp title="title" />
         </el-col>
       </el-row>
       <el-row :gutter="20" style="height: 300px;">

@@ -58,6 +58,7 @@
         <div class="btnBox">
           <el-button text link type="primary" @click="tableOperMap.onEditDrawer(row)">编辑抽屉</el-button>
           <el-button text link type="primary" @click="tableOperMap.onEditDialog(row)">编辑弹窗</el-button>
+          <el-button text link type="primary" @click="router.push({path:'/detail',query:{id:row.id}})">编辑页面</el-button>
           <el-button text link type="danger" @click="tableOperMap.onDel(row)">删除</el-button>
         </div>
       </template>
@@ -74,7 +75,9 @@ import { useInitTable } from "@/core/hooks/useInitTable";
 import { searchForm, columns, statusEnum } from "./config";
 import w from "./widgets";
 import c, { compRefs } from "./components";
+import { useRouter } from "vue-router";
 
+const router = useRouter();
 const state = reactive({
   loading: false,
   params: {} as any,

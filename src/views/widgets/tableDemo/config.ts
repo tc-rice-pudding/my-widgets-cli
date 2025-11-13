@@ -49,7 +49,7 @@ export const columns = [
     prop: "remark",
     showTooltip: true,
   },
-  { label: "操作", tdSlot: "default", width: 200, fixed: "right" },
+  { label: "操作", tdSlot: "default", width: 300, fixed: "right" },
 ];
 
 export const searchForm = reactive([

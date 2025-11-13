@@ -182,6 +182,15 @@ const routes: Array<RouteRecordRaw> = [
           title: "表格",
         },
       },
+      {
+        path: "/detail",
+        name: "detail", // 这里如果是home 就代表是一级菜单，不添加面包屑导航
+        component: () => import("@/views/widgets/tableDemo/components/detail.vue"),
+        meta: {
+          affix: true,
+          title: "表格",
+        },
+      },
     ],
   },
   {
