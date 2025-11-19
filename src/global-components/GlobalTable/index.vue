@@ -21,18 +21,6 @@
         :show-overflow-tooltip="item.showTooltip"
         :tooltip-options="{ visible: true }"
         v-bind="item"
-        :selectable="checkSelectable"
-        :type="
-          item.prop == 'index'
-            ? 'index'
-            : item.type === 'selection'
-            ? 'selection'
-            : item.prop
-        "
-        :fixed="item.fixed || false"
-        :filters="item.filters"
-        :column-key="item.columnKey"
-        :reserve-selection="props.reverseSelection && item.type === 'selection'"
       >
         <!-- 表头插槽 -->
         <template v-if="item.labelSlot" #header="scope">
@@ -77,16 +65,25 @@
               </template>
               <!-- 更多 dropdown -->
               <template v-if="item.children && item.children.length">
-                <el-dropdown popper-class="table-dropdown-popper" trigger="click" class="dropdown-list">
+                <el-dropdown
+                  popper-class="table-dropdown-popper"
+                  trigger="click"
+                  class="dropdown-list"
+                >
                   <el-button link :type="item.type">
                     更多<el-icon class="el-icon--right"><arrow-down /></el-icon>
                   </el-button>
                   <template #dropdown>
                     <el-dropdown-menu>
-                      <el-dropdown-item v-for="mItem in item.children.filter(f => f.show(scope.row))" :key="mItem.label">
+                      <el-dropdown-item
+                        v-for="mItem in item.children.filter((f) =>
+                          f.show(scope.row)
+                        )"
+                        :key="mItem.label"
+                      >
                         <el-button
                           link
-                          style="font-size: 14px;"
+                          style="font-size: 14px"
                           :type="mItem.type"
                           @click="handleClick(scope.row, mItem)"
                         >
@@ -137,7 +134,7 @@ const emit = defineEmits([
   "handleDelete",
   "handleMethod",
   "selectAllChange",
-  "filterChange"
+  "filterChange",
 ]);
 
 const tableRef = ref<InstanceType<typeof ElTable>>();
@@ -210,12 +207,12 @@ const props = defineProps({
     require: false,
     default: "200px",
   },
-  checkSelectable:{
-    type:Function,
+  checkSelectable: {
+    type: Function,
     require: false,
-    default:()=>{
-      return true
-    }
+    default: () => {
+      return true;
+    },
   },
   // 是否分页多选
   reverseSelection: {
@@ -282,6 +279,7 @@ const tableRowClassName = ({ rowIndex }: { rowIndex: number }) => {
         background: #f6f6f6;
       }
     }
+
     &:nth-child(2n + 1) {
       .el-table__cell {
         background: #ffffff;
@@ -306,30 +304,37 @@ const tableRowClassName = ({ rowIndex }: { rowIndex: number }) => {
       padding: 5px 8px;
       margin-left: 0;
       font-size: 14px;
+
       &:first-child {
         padding-left: 0;
       }
     }
   }
+
   .dropdown-list {
     :deep(.el-button) {
       padding: 5px 8px !important;
     }
   }
+
   :deep(.is-active) {
     background: #216dd9;
   }
+
   :deep(.el-pagination) {
     justify-content: center;
     position: relative;
     padding: 10px 20px;
+
     .el-pagination__rightwrapper {
       justify-content: center;
     }
+
     .el-pagination__total {
       position: absolute;
       right: 160px;
     }
+
     .el-pagination__sizes {
       position: absolute;
       right: 20px;
@@ -340,27 +345,31 @@ const tableRowClassName = ({ rowIndex }: { rowIndex: number }) => {
   :deep(.el-scrollbar__view) {
     height: 100%;
   }
+
   :deep(.el-table__empty-text) {
     line-height: 0;
   }
+
   .empty-text {
     font-size: 16px;
-    color: rgba(0,0,0,0.6);
+    color: rgba(0, 0, 0, 0.6);
     line-height: 14px;
     margin-top: 11px;
   }
 }
 </style>
 <style lang="scss">
-  .table-dropdown-popper {
-    .el-dropdown-menu__item {
-      padding: 6px 20px;
-      .el-button--default {
-        color: rgba(0, 0, 0, 0.8);
-      }
-      .el-button--danger {
-        color: #D93021;
-      }
+.table-dropdown-popper {
+  .el-dropdown-menu__item {
+    padding: 6px 20px;
+
+    .el-button--default {
+      color: rgba(0, 0, 0, 0.8);
+    }
+
+    .el-button--danger {
+      color: #d93021;
     }
   }
+}
 </style>

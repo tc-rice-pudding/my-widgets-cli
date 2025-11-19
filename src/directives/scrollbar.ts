@@ -68,7 +68,7 @@ const generateStyle = (
 
   // 基础样式
   let styleContent = `.${uniqueClass} {
-    width: calc(100% + 10px);
+    // width: calc(100% + 10px);
     ${options.vertical && "overflow-y: auto;"}
     ${options.horizontal && "overflow-x: auto;"}
     scrollbar-width: thin; // Firefox

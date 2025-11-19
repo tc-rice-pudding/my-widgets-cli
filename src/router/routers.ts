@@ -185,12 +185,64 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "/detail",
         name: "detail", // 这里如果是home 就代表是一级菜单，不添加面包屑导航
-        component: () => import("@/views/widgets/tableDemo/components/detail.vue"),
+        component: () =>
+          import("@/views/widgets/tableDemo/components/detail.vue"),
         meta: {
           affix: true,
           title: "表格",
         },
         hidden: true,
+      },
+    ],
+  },
+  {
+    path: "/schedulerMgr",
+    component: Layout,
+    name: "调度器",
+    meta: {
+      title: "调度器",
+      affix: true,
+    },
+    icon: "icon-ren",
+    children: [
+      {
+        path: "/schedulerMgr",
+        name: "schedulerMgr", // 这里如果是home 就代表是一级菜单，不添加面包屑导航
+        component: () => import("@/views/widgets/schedulerMgr/index.vue"),
+        meta: {
+          affix: true,
+          title: "调度器",
+        },
+      },
+    ],
+  },
+  {
+    path: "/paramsMgr",
+    component: Layout,
+    name: "系统配置",
+    meta: {
+      title: "系统配置",
+      affix: true,
+    },
+    icon: "icon-ren",
+    children: [
+      {
+        path: "/paramsMgr",
+        name: "paramsMgr",
+        component: () => import("@/views/paramsMgr/index.vue"),
+        meta: {
+          affix: true,
+          title: "系统参数配置",
+        },
+      },
+      {
+        path: "/dictMgr",
+        name: "dictMgr",
+        component: () => import("@/views/dictMgr/index.vue"),
+        meta: {
+          affix: true,
+          title: "字典配置",
+        },
       },
     ],
   },
