@@ -190,6 +190,7 @@ const routes: Array<RouteRecordRaw> = [
           affix: true,
           title: "表格",
         },
+        hidden: true,
       },
     ],
   },
