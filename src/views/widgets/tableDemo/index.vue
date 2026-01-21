@@ -12,6 +12,20 @@
             </el-button>
           </template>
           <template v-else>
+            <el-button type="primary" plain @click="tableOperMap.onExport">
+              <el-icon class="dpi-iconfont icon-daochu" style="margin-right: 4px" />
+              导出
+            </el-button>
+            <el-button type="primary" plain @click="tableOperMap.onImport">
+              <el-icon class="dpi-iconfont icon-daoru" style="margin-right: 4px" />
+              批量导入
+            </el-button>
+            <el-button type="primary" @click="tableOperMap.onAdd">
+              <el-icon style="margin-right: 4px">
+                <Plus />
+              </el-icon>
+              新增资产
+            </el-button>
             <el-button type="primary" @click="tableOperMap.onAdd">
               <el-icon style="margin-right: 4px">
                 <Plus />
@@ -58,7 +72,8 @@
         <div class="btnBox">
           <el-button text link type="primary" @click="tableOperMap.onEditDrawer(row)">编辑抽屉</el-button>
           <el-button text link type="primary" @click="tableOperMap.onEditDialog(row)">编辑弹窗</el-button>
-          <el-button text link type="primary" @click="router.push({path:'/detail',query:{id:row.id}})">编辑页面</el-button>
+          <el-button text link type="primary"
+            @click="router.push({ path: '/detail', query: { id: row.id } })">编辑页面</el-button>
           <el-button text link type="danger" @click="tableOperMap.onDel(row)">删除</el-button>
         </div>
       </template>
@@ -67,6 +82,7 @@
     <c.delDialog :ref="compRefs.delDialogRef" />
     <c.detailDrawer :ref="compRefs.detailDrawerRef" />
     <c.detailDialog :ref="compRefs.detailDialogRef" />
+    <c.batchImport :ref="compRefs.batchImportRef" @successCB="onTableSearch" />
   </div>
 </template>
 
@@ -76,6 +92,7 @@ import { searchForm, columns, statusEnum } from "./config";
 import w from "./widgets";
 import c, { compRefs } from "./components";
 import { useRouter } from "vue-router";
+import { fileExport } from "@/utils/common";
 
 const router = useRouter();
 const state = reactive({
@@ -182,6 +199,18 @@ const tableOperMap = {
   },
   onAdd: () => {
     console.log("onAdd");
+  },
+  onExport: async () => {
+    const params = {
+      ...state.params,
+      pageNum: state.pagination.pageNum,
+      pageSize: state.pagination.pageSize,
+    };
+    // const res: any = await downloadDevice(params);
+    // fileExport({ name: /filename\*=utf-8''([^;]+)/i.exec(res.headers['content-disposition'])?.[1], content: res.data });
+  },
+  onImport: () => {
+    compRefs.batchImportRef.value?.open({});
   },
 };
 

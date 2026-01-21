@@ -46,6 +46,16 @@ export const excelExport = (file) => {
   link.click();
   document.body.removeChild(link);
 };
+export const fileExport = (file) => {
+  const link = document.createElement("a");
+  const blob = new Blob([file.content]);
+  link.style.display = "none";
+  link.href = URL.createObjectURL(blob);
+  link.setAttribute("download", `${file.name}`);
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
 // 获取url参数
 export const GetQueryString = (name) => {
   var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");

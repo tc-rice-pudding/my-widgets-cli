@@ -8,7 +8,7 @@ interface EllipsisOptions {
 const vEllipsis: Directive<HTMLElement, EllipsisOptions | string | undefined> = {
     mounted(el, binding) {
       const options: EllipsisOptions =
-        typeof binding.value === "object"
+        typeof binding.value === "object" && binding.value != null
           ? binding.value
           : { content: binding.value };
 
