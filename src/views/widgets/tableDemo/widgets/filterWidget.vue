@@ -6,26 +6,12 @@
     <el-icon :class="['icon-container', props.filterList?.length && 'active']" size="14px" @click="open">
       <Filter />
     </el-icon>
-    <el-dialog
-      v-model="state.visable"
-      :title="`${props.title}筛选`"
-      width="400"
-      append-to-body
-      class="custom-filter-dialog"
-    >
-      <GlobalTable
-        ref="tableRef"
-        class="custom-table"
-        :columns="columns"
-        :border="false"
-        rowKey="value"
-        :table-data="props.filterData"
-        @selectChange="handleSelectionChange"
-        :loading="false"
-        style="height: 200px"
-      >
+    <el-dialog v-model="state.visable" :title="`${props.title}筛选`" width="400" append-to-body
+      class="custom-filter-dialog">
+      <GlobalTable ref="tableRef" class="custom-table" :columns="columns" :border="false" rowKey="value"
+        :table-data="props.filterData" @selectChange="handleSelectionChange" :loading="false" style="height: 200px">
         <template #name="{ row }">
-          {{ props.labelMap?.[row.value] ?? row.name ?? row.value }}
+          <div v-ellipsis>{{ props.labelMap?.[row.value] ?? row.name ?? row.value }}</div>
         </template>
       </GlobalTable>
       <template #footer>
@@ -87,7 +73,7 @@ const open = () => {
 
   if (props.filterList?.length == 0) {
     resetFilter();
-  }else{
+  } else {
     checkFilter();
   }
 };
@@ -106,10 +92,11 @@ const onFilter = () => {
   close();
 };
 
-const checkFilter = ()=>{
+const checkFilter = () => {
   nextTick(() => {
-    props.filterList?.forEach(it=>{
-      tableRef.value?.tableRef?.toggleRowSelection(props.filterData.find(i=>i.value==it), true);
+    props.filterList?.forEach(it => {
+      const tmp = props.filterData.find(i => i.value == it);
+      tmp && tableRef.value?.tableRef?.toggleRowSelection(tmp, true);
     });
   });
 };
@@ -128,7 +115,8 @@ defineExpose({ resetFilter });
   align-items: center;
   cursor: pointer;
   column-gap: 4px;
-  .active{
+
+  .active {
     color: var(--el-color-primary);
   }
 }
@@ -140,14 +128,16 @@ defineExpose({ resetFilter });
     height: 100% !important;
   }
 
-  th > .cell,
+  th>.cell,
   .cell {
     text-align: left;
   }
 }
-.icon-container{
+
+.icon-container {
   transition: all 0.3s;
-  &:hover{
+
+  &:hover {
     color: var(--el-color-primary);
   }
 }
@@ -165,7 +155,7 @@ defineExpose({ resetFilter });
   .el-table {
     height: 100% !important;
 
-    th > .cell,
+    th>.cell,
     .cell {
       text-align: left !important;
     }

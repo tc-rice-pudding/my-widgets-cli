@@ -60,15 +60,9 @@
         <w.switchWidget :row="row" field="flowStatus" @changeCB="onTableSearch" />
       </template>
 
-      <template #typeLabel="{ row, column }">
-        <!-- 表头过滤 -->
-        <w.filterWidget v-model:filterList="state.types" :filterData="state.typeFilterData" :title="column.label"
-          @onFilter="onTableSearch" />
-      </template>
-      <template #statLabel="{ row, column }">
-        <!-- 表头过滤 -->
-        <w.filterWidget v-model:filterList="state.stats" :filterData="state.statFilterData" :title="column.label"
-          @onFilter="onTableSearch" />
+      <template v-for="it in groupField" :key="it" v-slot:[`${it}Label`]="{ row, column }">
+        <w.filterWidget v-model:filterList="state[`${column.property}s`]"
+          :filterData="state[`${column.property}FilterData`]" :title="column.label" @onFilter="onTableSearch" />
       </template>
 
       <template #default="{ row }">
@@ -110,10 +104,15 @@ const state = reactive({
   },
   orders: [{ asc: false, column: "createTime" }],
 
-  types: [],
-  typeFilterData: [],
-  stats: [],
-  statFilterData: [],
+  // types: [],
+  // typeFilterData: [],
+  // stats: [],
+  // statFilterData: [],
+});
+const groupField = ["type", "stat"];
+groupField.forEach(field => {
+  state[`${field}s`] = [];
+  state[`${field}FilterData`] = [];
 });
 
 const getGroupHandler = async (_params, filterField) => {
@@ -139,12 +138,13 @@ const getTableList = async () => {
     pageNum: state.pagination.pageNum,
     pageSize: state.pagination.pageSize,
     orders: state.orders || [],
-    types: state.types || [],
-    stats: state.stats || [],
   };
-  console.log("tableParams=>", params);
-  getGroupHandler(params, "type");
-  getGroupHandler(params, "stat");
+  groupField.forEach(field => {
+    params[`${field}s`] = state[`${field}s`];
+  });
+  groupField.forEach(field => {
+    getGroupHandler(params, field);
+  });
 
   await new Promise((resolve) => {
     setTimeout(() => {
@@ -154,7 +154,7 @@ const getTableList = async () => {
 
   state.loading = false;
   state.tableData = [
-    { name: '121222222222212122222222221212222222222', stat: 1, flowStatus: 1 ,expression:"[{label:'姓名',value:'张三'},{label:'姓名',value:'张三'},{label:'姓名',value:'张三'}]"},
+    { name: '121222222222212122222222221212222222222', stat: 1, flowStatus: 1, expression: "[{label:'姓名',value:'张三'},{label:'姓名',value:'张三'},{label:'姓名',value:'张三'}]" },
     { stat: 0, flowStatus: 0 },
     { stat: 0, flowStatus: 1 },
     { stat: 1, flowStatus: 1 },
