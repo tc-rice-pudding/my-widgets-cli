@@ -47,20 +47,19 @@
         </el-col>
       </el-row>
       <el-row :gutter="20" style="height: 200px">
-        <el-col :span="6">
+        <el-col :span="8">
           <warp title="总览">
             <p.overview />
           </warp>
         </el-col>
-        <el-col :span="6">
-          <warp title="title">
+        <el-col :span="8">
+          <warp title="动态列表（附带校验）">
+            <el-button type="primary" @click="submit">提交表单</el-button>
+            <p.dynamicList ref="emailRef" reg="email" />
+            <p.dynamicList ref="phoneRef" reg="phone" />
           </warp>
         </el-col>
-        <el-col :span="6">
-          <warp title="title">
-          </warp>
-        </el-col>
-        <el-col :span="6">
+        <el-col :span="8">
           <warp title="title">
           </warp>
         </el-col>
@@ -73,12 +72,24 @@
 import warp from "@/views/widgets/warpDemo/components/warp.vue";
 import p from "./components";
 
+const emailRef = ref();
+const phoneRef = ref();
 const state = reactive({
   timeRange1: [],
   timeRange2: [],
   condition1: {},
   condition2: {},
 });
+
+const submit = async () => {
+  await Promise.all([
+    emailRef.value?.submitForm(),
+    phoneRef.value?.submitForm(),
+  ]).then((res) => {
+    console.log(res[0] || []);
+    console.log(res[1] || []);
+  });
+};
 </script>
 
 <style scoped lang='scss'>

@@ -154,7 +154,7 @@ const getTableList = async () => {
 
   state.loading = false;
   state.tableData = [
-    { name: '121222222222212122222222221212222222222', stat: 1, flowStatus: 1, expression: "[{label:'姓名',value:'张三'},{label:'姓名',value:'张三'},{label:'姓名',value:'张三'}]" },
+    { name: '121222222222212122222222221212222222222', stat: 1, flowStatus: 1, expression: "[{label:'姓名',value:'张三张三张三张三张三张三张三'},{label:'姓名',value:'张三张三张三张三张三张三张三'},{label:'姓名',value:'张三'}]" },
     { stat: 0, flowStatus: 0 },
     { stat: 0, flowStatus: 1 },
     { stat: 1, flowStatus: 1 },

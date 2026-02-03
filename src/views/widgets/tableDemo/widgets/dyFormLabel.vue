@@ -1,7 +1,7 @@
 <template>
   <ul :style="{ 'max-height': heightRef }">
     <li v-for="(item, inx) in list" :key="item.code">
-      <span>{{ item.label }}: {{ item.value }}</span>
+      <span v-ellipsis>{{ item.label }}: {{ item.value }}</span>
 
       <el-button v-if="inx == 1 && heightRef == '48px'" text link type="primary"
         @click="heightRef = 23 * list.length + 'px'"><el-icon>
