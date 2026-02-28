@@ -31,16 +31,15 @@
           </template>
         </warp>
       </el-col>
-      <el-col :span="8">
+      <el-col :span="8" style="height: 400px">
         <warp title="v-slideIn 指令">
           <template #default>
-            <div style="height: 300px" v-scrollbar>
               <div
                 style="
                   height: 100px;
                   line-height: 100px;
                   text-align: center;
-                  margin: 10px;
+                  margin: 10px 0;
                   background-color: antiquewhite;
                 "
                 v-slideIn
@@ -49,7 +48,6 @@
               >
                 {{ it }}
               </div>
-            </div>
           </template>
         </warp>
       </el-col>
@@ -165,16 +163,14 @@
       </el-col>
     </el-row>
     <el-row :gutter="20">
-      <el-col :span="24">
+      <el-col :span="12">
         <warp title="v-frame-load 指令，多组件懒加载+分帧加载">
           <template #default>
             <FrameLoad style="height: 800px;"/>
           </template>
         </warp>
       </el-col>
-    </el-row>
-    <el-row :gutter="20">
-      <el-col :span="24">
+      <el-col :span="12">
         <warp title="v-infinite-scroll 指令，无限滚动示例">
           <template #default>
             <InfiniteScroll style="height: 400px;"/>

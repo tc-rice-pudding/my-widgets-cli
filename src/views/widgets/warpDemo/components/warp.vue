@@ -23,6 +23,8 @@ const props = defineProps({
   height: 100%;
   width: 100%;
   box-sizing: border-box;
+  display: grid;
+  grid-template-rows: 38px 1fr;
 
   .warp-title {
     display: flex;
@@ -37,7 +39,7 @@ const props = defineProps({
   }
 
   >section {
-    height: calc(100% - 38px);
+    // height: calc(100% - 38px);
   }
 }
 </style>

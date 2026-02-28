@@ -3,6 +3,7 @@ import { FormValidateCallback } from "element-plus";
 // 基础字段类型
 export type FieldType =
   | "input"
+  | "switch"
   | "password"
   | "number"
   | "select"

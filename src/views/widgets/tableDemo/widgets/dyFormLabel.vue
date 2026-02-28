@@ -45,5 +45,8 @@ ul {
 li {
   display: flex;
   align-items: center;
+  >span{
+    font-size: 14px;
+  }
 }
 </style>

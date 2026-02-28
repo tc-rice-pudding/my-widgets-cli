@@ -28,6 +28,7 @@ const contentRef = computed(() => props.row[props.field] ?? '');
   gap: 20px;
   align-items: center;
   justify-content: space-between;
+  font-size: 14px;
 
   >i {
     cursor: pointer;

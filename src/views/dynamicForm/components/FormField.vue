@@ -22,6 +22,13 @@
     clearable
   />
 
+  <el-switch
+    v-else-if="field.type === 'switch'"
+    v-model="formData[field.name]"
+    :inactive-value="field?.options?.[0]?.value ?? 0"
+    :active-value="field?.options?.[1]?.value ?? 1"
+  />
+
   <el-date-picker
     v-else-if="field.type === 'date'"
     v-model="formData[field.name]"

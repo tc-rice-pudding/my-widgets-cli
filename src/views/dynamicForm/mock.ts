@@ -19,6 +19,25 @@ export const schemeDemo = [
     ],
   },
   {
+    name: "switch",
+    label: "switch",
+    required: true,
+    type: "switch",
+    dataType: "number",
+    defaultVal: '',
+    value: "",
+    options: [
+      {
+        value: 0,
+        label: "关",
+      },
+      {
+        value: 1,
+        label: "开",
+      },
+    ],
+  },
+  {
     name: "pos",
     label: "平台",
     required: true,

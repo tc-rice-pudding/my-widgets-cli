@@ -49,9 +49,28 @@ declare global {
 const generateUniqueClass = () =>
   `scrollbar-${Math.random().toString(36).substring(2, 12)}`;
 
+const monitorScrollbar = (el: HTMLElement) => {
+  el._resizeObserver = new ResizeObserver(() => {
+    // 检测垂直滚动条：scrollHeight>clientHeight 且 未隐藏溢出
+    const hasScrollY =
+      el.scrollHeight > el.clientHeight &&
+      getComputedStyle(el).overflowY !== "hidden";
+
+    // 检测水平滚动条（如需启用，取消注释）
+    const hasScrollX =
+      el.scrollWidth > el.clientWidth &&
+      getComputedStyle(el).overflowX !== "hidden";
+
+    // 动态添加/移除类（控制样式）
+    el.classList.toggle("has-scroll-y", hasScrollY);
+    el.classList.toggle("has-scroll-x", hasScrollX); // 水平滚动条样式
+  });
+  el._resizeObserver.observe(el);
+};
+
 const generateStyle = (
   el: HTMLElement,
-  binding: DirectiveBinding<ScrollbarStyleOptions>
+  binding: DirectiveBinding<ScrollbarStyleOptions>,
 ) => {
   // 合并配置
   const options: ScrollbarStyleOptions = {
@@ -68,11 +87,17 @@ const generateStyle = (
 
   // 基础样式
   let styleContent = `.${uniqueClass} {
-    // width: calc(100% + 10px);
     ${options.vertical && "overflow-y: auto;"}
     ${options.horizontal && "overflow-x: auto;"}
     scrollbar-width: thin; // Firefox
     scrollbar-color: ${options.thumbColor} ${options.trackColor};
+  }`;
+
+  styleContent += `.${uniqueClass}.has-scroll-y {
+    width: calc(100% + 10px);
+  }`;
+  styleContent += `.${uniqueClass}.has-scroll-x {
+    height: calc(100% + 10px);
   }`;
 
   // WebKit内核浏览器滚动条样式 (Chrome, Safari等)
@@ -130,6 +155,7 @@ const customScrollbarDirective: ObjectDirective<
 > = {
   mounted(el, binding) {
     generateStyle(el, binding);
+    monitorScrollbar(el);
   },
 
   // 当指令参数更新时
@@ -144,6 +170,7 @@ const customScrollbarDirective: ObjectDirective<
     }
 
     generateStyle(el, binding);
+    monitorScrollbar(el);
   },
 
   // 指令与元素解绑时
@@ -158,6 +185,12 @@ const customScrollbarDirective: ObjectDirective<
       el.classList.remove(uniqueClass);
       // 清除引用
       delete el._scrollbarStyle;
+    }
+    
+    if (el._resizeObserver) {
+      el._resizeObserver.unobserve(el);
+      el._resizeObserver.disconnect();
+      delete el._resizeObserver;
     }
   },
 };
