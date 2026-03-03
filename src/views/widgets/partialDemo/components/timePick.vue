@@ -122,7 +122,7 @@ watch(() => state.query.range, () => {
 }
 </style>
 <style lang="scss">
-.custom-video-popper {
+.custom-timepick-popper {
   max-width: 650px !important;
 }
 </style>

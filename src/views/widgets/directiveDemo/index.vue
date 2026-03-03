@@ -9,13 +9,11 @@
           <template #default>
             <!-- FIXME: 示例代码 -->
             <div style="height: 300px">
-              <div
-                style="
+              <div style="
                   height: 1000px;
                   width: 2000px;
                   background: linear-gradient(45deg, red, yellow, pink);
-                "
-              ></div>
+                "></div>
             </div>
           </template>
         </warp>
@@ -24,30 +22,22 @@
         <warp title="v-iframe 指令">
           <template #default>
             <!-- FIXME: 示例代码 -->
-            <div
-              style="width: 100%; height: 100%"
-              v-iframe="'http://localhost:1234/my/widget/home'"
-            />
+            <div style="width: 100%; height: 100%" v-iframe="'http://localhost:1234/my/widget/home'" />
           </template>
         </warp>
       </el-col>
       <el-col :span="8" style="height: 400px">
         <warp title="v-slideIn 指令">
           <template #default>
-              <div
-                style="
+            <div style="
                   height: 100px;
                   line-height: 100px;
                   text-align: center;
                   margin: 10px 0;
                   background-color: antiquewhite;
-                "
-                v-slideIn
-                v-for="it in 10"
-                :key="it"
-              >
-                {{ it }}
-              </div>
+                " v-slideIn v-for="it in 10" :key="it">
+              {{ it }}
+            </div>
           </template>
         </warp>
       </el-col>
@@ -57,23 +47,19 @@
         <warp title="v-click-outside 指令">
           <template #default>
             <!-- FIXME: 示例代码 -->
-            <div
-              v-click-outside="
-                () =>
-                  ElMessage({
-                    message: '点击了外部区域',
-                    grouping: true,
-                    type: 'info',
-                  })
-              "
-              style="
+            <div v-click-outside="() =>
+                ElMessage({
+                  message: '点击了外部区域',
+                  grouping: true,
+                  type: 'info',
+                })
+              " style="
                 width: 100%;
                 height: 100px;
                 background: #f5f5f5;
                 text-align: center;
                 line-height: 100px;
-              "
-            >
+              ">
               点击该容器外部区域
             </div>
           </template>
@@ -93,10 +79,7 @@
         <warp title="v-debounce 指令">
           <template #default>
             <!-- FIXME: 示例代码 -->
-            <el-button
-              type="primary"
-              v-debounce:click_200="() => ElMessage.success('click 防抖...')"
-            >
+            <el-button type="primary" v-debounce:click_200="() => ElMessage.success('click 防抖...')">
               防抖指令
             </el-button>
           </template>
@@ -116,20 +99,9 @@
         <warp title="v-resize v-ellipsis 实现自动 tooltip">
           <template #default>
             <!-- FIXME: 示例代码 -->
-            <el-tooltip
-              class="box-item"
-              effect="dark"
-              :content="row.text"
-              placement="top"
-              :disabled="!row.tipDisable"
-            >
-              <span
-                v-ellipsis="row.text"
-                v-resize="
-                  (entry, el) => resizeHandler(entry, el, row, 'tipDisable')
-                "
-                style="display: inline-block; max-width: 100px"
-              >
+            <el-tooltip class="box-item" effect="dark" :content="row.text" placement="top" :disabled="!row.tipDisable">
+              <span v-ellipsis="row.text" v-resize="(entry, el) => resizeHandler(entry, el, row, 'tipDisable')
+                " style="display: inline-block; max-width: 100px">
                 {{ row.text }}
               </span>
             </el-tooltip>
@@ -140,13 +112,10 @@
         <warp title="v-screenfull 指令">
           <template #default>
             <!-- FIXME: 示例代码 -->
-            <div
-              id="aaa"
-              style="
+            <div id="aaa" style="
                 height: 100px;
                 background: linear-gradient(45deg, red, yellow, pink);
-              "
-            >
+              ">
               <el-button type="primary" v-screenfull="{ container: '#aaa' }">
                 全屏
               </el-button>
@@ -161,19 +130,30 @@
           </template>
         </warp>
       </el-col>
+      <el-col :span="6">
+        <warp title="v-format-number 指令">
+          <template #default>
+            <div v-format-number>1234567.89</div> 
+            <div v-format-number>1234567.81129</div> 
+            <div v-format-number>987654321kg</div> 
+            <div v-format-number>100000m</div>
+            <div v-format-number>100000 元</div>
+          </template>
+        </warp>
+      </el-col>
     </el-row>
     <el-row :gutter="20">
       <el-col :span="12">
         <warp title="v-frame-load 指令，多组件懒加载+分帧加载">
           <template #default>
-            <FrameLoad style="height: 800px;"/>
+            <FrameLoad style="height: 800px;" />
           </template>
         </warp>
       </el-col>
       <el-col :span="12">
         <warp title="v-infinite-scroll 指令，无限滚动示例">
           <template #default>
-            <InfiniteScroll style="height: 400px;"/>
+            <InfiniteScroll style="height: 400px;" />
           </template>
         </warp>
       </el-col>
