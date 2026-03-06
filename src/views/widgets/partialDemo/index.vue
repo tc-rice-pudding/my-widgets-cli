@@ -1,84 +1,98 @@
 <template>
-  <div class="warp-demo-view">
-    <el-scrollbar height="100%">
-      <el-row :gutter="20">
-        <el-col :span="12">
-          <warp title="时间范围-默认格式化-限制时间范围40天">
-            <p.timePick v-model:timeRange="state.timeRange1" :limitDays="40" />
-            <p>{{ state.timeRange1 }}</p>
-          </warp>
-        </el-col>
-        <el-col :span="12">
-          <warp title="时间范围-指定格式化格式">
-            <p.timePick v-model:timeRange="state.timeRange2" :format="['YYYY-MM-DD 00:00:00', 'YYYY-MM-DD HH:00:00']" />
-            <p>{{ state.timeRange2 }}</p>
-          </warp>
-        </el-col>
-      </el-row>
-      <el-row :gutter="20">
-        <el-col :span="12">
-          <warp title="搜索框-默认">
-            <p.searchWidget v-model:condition="state.condition1" />
-            <p>{{ state.condition1 }}</p>
-          </warp>
-        </el-col>
-        <el-col :span="12">
-          <warp title="搜索框-隐藏前缀">
-            <p.searchWidget v-model:condition="state.condition2" :showPrepend="false" />
-            <p>{{ state.condition2 }}</p>
-          </warp>
-        </el-col>
-      </el-row>
-      <el-row :gutter="20">
-        <el-col :span="10">
-          <warp title="有限状态机demo">
-            <p.trafficLight />
-          </warp>
-        </el-col>
-        <el-col :span="8">
-          <warp title="TOP 排行">
-            <p.order />
-          </warp>
-        </el-col>
-        <el-col :span="6">
-          <warp title="TOP 排行">
-            <p.top />
-          </warp>
-        </el-col>
-      </el-row>
-      <el-row :gutter="20">
-        <el-col :span="24">
-          <warp title="过滤条件">
-            <p.dynamicCondition />
-          </warp>
-        </el-col>
-      </el-row>
-      <el-row :gutter="20">
-        <el-col :span="24">
-          <warp title="过滤条件-插槽">
-            <p.dynamicCondition2 />
-          </warp>
-        </el-col>
-      </el-row>
-      <el-row :gutter="20" style="height: 200px">
-        <el-col :span="8">
-          <warp title="总览">
-            <p.overview />
-          </warp>
-        </el-col>
-        <el-col :span="6">
-          <warp title="动态列表（附带校验）">
-            <el-button type="primary" @click="submit">提交表单</el-button>
-            <p.dynamicList ref="emailRef" reg="email" />
-            <p.dynamicList ref="phoneRef" reg="phone" />
-          </warp>
-        </el-col>
-        <el-col :span="10">
-          <warp title="title">
-          </warp>
-        </el-col>
-      </el-row>
-    </el-scrollbar>
+  <div class="warp-demo-view" v-scrollbar>
+    <el-row :gutter="20">
+      <el-col :span="12">
+        <warp title="时间范围-默认格式化-限制时间范围40天">
+          <p.timePick v-model:timeRange="state.timeRange1" :limitDays="40" />
+          <p>{{ state.timeRange1 }}</p>
+        </warp>
+      </el-col>
+      <el-col :span="12">
+        <warp title="时间范围-指定格式化格式">
+          <p.timePick v-model:timeRange="state.timeRange2" :format="['YYYY-MM-DD 00:00:00', 'YYYY-MM-DD HH:00:00']" />
+          <p>{{ state.timeRange2 }}</p>
+        </warp>
+      </el-col>
+    </el-row>
+    <el-row :gutter="20">
+      <el-col :span="12">
+        <warp title="搜索框-默认">
+          <p.searchWidget v-model:condition="state.condition1" />
+          <p>{{ state.condition1 }}</p>
+        </warp>
+      </el-col>
+      <el-col :span="12">
+        <warp title="搜索框-隐藏前缀">
+          <p.searchWidget v-model:condition="state.condition2" :showPrepend="false" />
+          <p>{{ state.condition2 }}</p>
+        </warp>
+      </el-col>
+    </el-row>
+
+    <el-row :gutter="20">
+      <el-col :span="12">
+        <warp title="自定义 select 插槽">
+          <p.customSelect />
+        </warp>
+      </el-col>
+      <el-col :span="12">
+        <warp title="popover 条件">
+          <p.customPopover />
+        </warp>
+      </el-col>
+    </el-row>
+
+    <el-row :gutter="20">
+      <el-col :span="24">
+        <warp title="过滤条件">
+          <p.dynamicCondition />
+        </warp>
+      </el-col>
+    </el-row>
+    <el-row :gutter="20">
+      <el-col :span="24">
+        <warp title="过滤条件-插槽">
+          <p.dynamicCondition2 />
+        </warp>
+      </el-col>
+    </el-row>
+
+    <el-row :gutter="20">
+      <el-col :span="10">
+        <warp title="有限状态机demo">
+          <p.trafficLight />
+        </warp>
+      </el-col>
+      <el-col :span="8">
+        <warp title="TOP 排行">
+          <p.order />
+        </warp>
+      </el-col>
+      <el-col :span="6">
+        <warp title="TOP 排行">
+          <p.top />
+        </warp>
+      </el-col>
+    </el-row>
+
+    <el-row :gutter="20" style="height: 200px">
+      <el-col :span="8">
+        <warp title="总览">
+          <p.overview />
+        </warp>
+      </el-col>
+      <el-col :span="6">
+        <warp title="动态列表（附带校验）">
+          <el-button type="primary" @click="submit">提交表单</el-button>
+          <p.dynamicList ref="emailRef" reg="email" />
+          <p.dynamicList ref="phoneRef" reg="phone" />
+        </warp>
+      </el-col>
+      <el-col :span="10">
+        <warp title="title">
+        </warp>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
