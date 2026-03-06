@@ -9,9 +9,34 @@
     <el-dialog v-model="state.visable" :title="`${props.title}筛选`" width="400" append-to-body
       class="custom-filter-dialog">
       <GlobalTable ref="tableRef" class="custom-table" :columns="columns" :border="false" rowKey="value"
-        :table-data="props.filterData" @selectChange="handleSelectionChange" :loading="false" style="height: 200px">
+        :table-data="state.tableData" @selectChange="handleSelectionChange" :loading="false" style="height: 200px">
+        <template #nameSlot="{ column }">
+          <div style="display: flex; align-items: center; gap: 4px;">
+            <span>{{ props.title }}</span>
+            <el-popover title="" placement="bottom-start" :width="240" :visible="column.searchVisible">
+              <template #reference>
+                <el-button :class="[`registerBtn-${props.field}`]" type="primary" size="small" link text
+                  @click="column.searchVisible = !column.searchVisible">
+                  <el-icon>
+                    <Search />
+                  </el-icon>
+                </el-button>
+              </template>
+              <section v-click-outside:[`registerBtn-${props.field}`]="() => {
+                column.searchVisible = false;
+              }">
+                <el-input v-model="state.keyword" />
+                <div class="btn-container">
+                  <el-button size="small" type="primary" plain @click="onSearch(column)">查询</el-button>
+                  <el-button size="small" @click="onReset(column)">重置</el-button>
+                  <el-button size="small" @click="column.searchVisible = false">关闭</el-button>
+                </div>
+              </section>
+            </el-popover>
+          </div>
+        </template>
         <template #name="{ row }">
-          <div v-ellipsis>{{ props.labelMap?.[row.value] ?? row.name ?? row.value }}</div>
+          <div v-ellipsis v-html="getLabel(props.labelMap?.[row.value] ?? row.name ?? row.item)"></div>
         </template>
       </GlobalTable>
       <template #footer>
@@ -35,6 +60,10 @@ const props = defineProps({
     type: String,
     default: "",
   },
+  field: {
+    type: String,
+    default: "",
+  },
   labelMap: {
     type: Object,
     default: {},
@@ -53,7 +82,9 @@ const columns = [
   {
     label: "筛选类型",
     "min-width": 140,
+    labelSlot: 'nameSlot',
     tdSlot: "name",
+    showTooltip: true,
   },
   {
     label: "数量",
@@ -66,7 +97,34 @@ const tableRef = ref();
 const state = reactive({
   visable: false,
   selected: [] as ItemType[],
+  tableData: [] as any[],
+  keyword: '',
 });
+
+watch(() => props.filterData, () => {
+  state.tableData = props.filterData ?? [];
+}, {
+  immediate: true,
+  deep: true
+});
+
+const onSearch = (column) => {
+  state.tableData = props.filterData.filter(it => `${it.name}`.includes(state.keyword))
+  column.searchVisible = false;
+};
+const onReset = (column) => {
+  state.keyword = '';
+  state.tableData = props.filterData;
+  column.searchVisible = false;
+};
+const getLabel = (nameValue) => {
+  if (state.keyword) {
+    return `${nameValue ?? ''}`.replace(state.keyword, (str) => {
+      return `<span style="background: rgb(255, 192, 105);">${str}</span>`;
+    })
+  }
+  return nameValue;
+};
 
 const open = () => {
   state.visable = true;
@@ -139,6 +197,17 @@ defineExpose({ resetFilter });
 
   &:hover {
     color: var(--el-color-primary);
+  }
+}
+
+
+.btn-container {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  column-gap: 4px;
+  >button:nth-of-type(2){
+    width: 48px !important;
   }
 }
 </style>

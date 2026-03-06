@@ -61,8 +61,8 @@
       </template>
 
       <template v-for="it in groupField" :key="it" v-slot:[`${it}Label`]="{ row, column }">
-        <w.filterWidget v-model:filterList="state[`${column.property}s`]"
-          :filterData="state[`${column.property}FilterData`]" :title="column.label" @onFilter="onTableSearch" />
+        <w.filterWidget v-model:filterList="state[`${it}s`]"
+          :filterData="state[`${it}FilterData`]" :title="column.label" :field="it" @onFilter="onTableSearch" />
       </template>
 
       <template #default="{ row }">
