@@ -26,7 +26,12 @@
     "sm-crypto": "^0.3.12",
     "terser": "^5.16.8",
     "tippy.js": "^6.3.7",
-    "vue": "^3.2.45"
+    "vue": "^3.2.45",
+    "@andypf/json-viewer": "^2.2.0",
+    "vue-codemirror": "^6.1.1",
+    "vue-json-pretty": "^2.6.0",
+    "vue-json-viewer": "3",
+    "vuedraggable": "^4.1.0"
   },
   "devDependencies": {
     "@element-plus/icons-vue": "^2.0.10",

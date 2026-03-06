@@ -46,20 +46,34 @@
           </warp>
         </el-col>
       </el-row>
+      <el-row :gutter="20">
+        <el-col :span="24">
+          <warp title="过滤条件">
+            <p.dynamicCondition />
+          </warp>
+        </el-col>
+      </el-row>
+      <el-row :gutter="20">
+        <el-col :span="24">
+          <warp title="过滤条件-插槽">
+            <p.dynamicCondition2 />
+          </warp>
+        </el-col>
+      </el-row>
       <el-row :gutter="20" style="height: 200px">
         <el-col :span="8">
           <warp title="总览">
             <p.overview />
           </warp>
         </el-col>
-        <el-col :span="8">
+        <el-col :span="6">
           <warp title="动态列表（附带校验）">
             <el-button type="primary" @click="submit">提交表单</el-button>
             <p.dynamicList ref="emailRef" reg="email" />
             <p.dynamicList ref="phoneRef" reg="phone" />
           </warp>
         </el-col>
-        <el-col :span="8">
+        <el-col :span="10">
           <warp title="title">
           </warp>
         </el-col>
