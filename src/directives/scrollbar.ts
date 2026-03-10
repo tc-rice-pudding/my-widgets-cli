@@ -42,6 +42,7 @@ declare global {
       styleElement: HTMLStyleElement;
       uniqueClass: string;
     };
+    _resizeObserver?: ResizeObserver;
   }
 }
 
