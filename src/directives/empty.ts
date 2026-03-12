@@ -73,7 +73,7 @@ const emptyDirective: Directive = {
     el._emptyContainer = emptyContainer;
 
     // 根据 show 参数决定是否添加到元素中
-    if (binding.value?.show) {
+    if ((typeof binding.value == 'boolean' && binding.value) || binding.value?.show) {
       el.appendChild(emptyContainer);
     }
   },
@@ -91,7 +91,7 @@ const emptyDirective: Directive = {
     }
 
     // 根据 show 参数控制显隐
-    if (binding.value?.show) {
+    if ((typeof binding.value == 'boolean' && binding.value) || binding.value?.show) {
       if (!el.contains(emptyContainer)) {
         el.appendChild(emptyContainer);
       }
