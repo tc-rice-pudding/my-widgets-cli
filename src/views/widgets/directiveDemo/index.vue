@@ -4,7 +4,7 @@
     <div v-backtop="{ scrollContainer: '111' }">回到顶部</div>
 
     <el-row :gutter="20">
-      <el-col :span="8">
+      <el-col :span="6">
         <warp title="v-scrollbar 指令">
           <template #default>
             <!-- FIXME: 示例代码 -->
@@ -18,7 +18,7 @@
           </template>
         </warp>
       </el-col>
-      <el-col :span="8">
+      <el-col :span="6">
         <warp title="v-iframe 指令">
           <template #default>
             <!-- FIXME: 示例代码 -->
@@ -26,7 +26,7 @@
           </template>
         </warp>
       </el-col>
-      <el-col :span="8" style="height: 400px">
+      <el-col :span="6" style="height: 400px">
         <warp title="v-slideIn 指令">
           <template #default>
             <div style="
@@ -38,6 +38,13 @@
                 " v-slideIn v-for="it in 10" :key="it">
               {{ it }}
             </div>
+          </template>
+        </warp>
+      </el-col>
+      <el-col :span="6">
+        <warp title="v-empty 指令">
+          <template #default>
+            <empty />
           </template>
         </warp>
       </el-col>
@@ -143,14 +150,14 @@
       </el-col>
     </el-row>
     <el-row :gutter="20">
-      <el-col :span="12">
+      <el-col :span="8">
         <warp title="v-frame-load 指令，多组件懒加载+分帧加载">
           <template #default>
             <FrameLoad style="height: 800px;" />
           </template>
         </warp>
       </el-col>
-      <el-col :span="12">
+      <el-col :span="8">
         <warp title="v-infinite-scroll 指令，无限滚动示例">
           <template #default>
             <InfiniteScroll style="height: 400px;" />
@@ -166,6 +173,7 @@ import warp from "@/views/widgets/warpDemo/components/warp.vue";
 import { ElMessage } from "element-plus";
 import FrameLoad from "./frame-load/index.vue";
 import InfiniteScroll from './infinite-scroll/index.vue';
+import empty from './empty.vue';
 
 const row = ref({ text: "" });
 setTimeout(() => {
