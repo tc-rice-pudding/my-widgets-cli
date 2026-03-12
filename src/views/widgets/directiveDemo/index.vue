@@ -51,10 +51,13 @@
     </el-row>
     <el-row :gutter="20">
       <el-col :span="6">
-        <warp title="v-click-outside 指令">
+        <warp title="v-click-outside:[类过滤器] 指令">
+          <template #btn>
+            <el-button class="filterBtn" type="primary" size="small">点击此处无效</el-button>
+          </template>
           <template #default>
             <!-- FIXME: 示例代码 -->
-            <div v-click-outside="() =>
+            <div v-click-outside:filterBtn="() =>
                 ElMessage({
                   message: '点击了外部区域',
                   grouping: true,
@@ -76,7 +79,7 @@
         <warp title="v-copy 指令">
           <template #default>
             <!-- FIXME: 示例代码 -->
-            <el-button type="primary" v-copy="`你复制了一段内容`">
+            <el-button type="primary" v-copy="`你复制了一段内容`" size="small">
               复制该文本
             </el-button>
           </template>
@@ -86,7 +89,7 @@
         <warp title="v-debounce 指令">
           <template #default>
             <!-- FIXME: 示例代码 -->
-            <el-button type="primary" v-debounce:click_200="() => ElMessage.success('click 防抖...')">
+            <el-button type="primary" size="small" v-debounce:click_200="() => ElMessage.success('click 防抖...')">
               防抖指令
             </el-button>
           </template>
@@ -96,7 +99,7 @@
         <warp title="v-draggable 指令">
           <template #default>
             <!-- FIXME: 示例代码 -->
-            <el-button type="primary" v-draggable> 拖拽我 </el-button>
+            <el-button type="primary" size="small" v-draggable> 拖拽我 </el-button>
           </template>
         </warp>
       </el-col>

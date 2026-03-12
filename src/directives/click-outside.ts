@@ -8,6 +8,7 @@ interface ClickOutsideBinding extends DirectiveBinding {
 const vClickOutside: Directive = {
   beforeMount(el: HTMLElement, binding: ClickOutsideBinding) {
     el._clickOutsideHandler = (event: Event) => {
+      debugger
       if(binding.arg && document.querySelector(`.${binding.arg}`)?.contains(event.target as Node)) return;
       
       if (!(el === event.target || el.contains(event.target as Node)) && typeof binding.value == "function") {
