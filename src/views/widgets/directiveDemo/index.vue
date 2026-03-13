@@ -76,36 +76,6 @@
         </warp>
       </el-col>
       <el-col :span="6">
-        <warp title="v-copy 指令">
-          <template #default>
-            <!-- FIXME: 示例代码 -->
-            <el-button type="primary" v-copy="`你复制了一段内容`" size="small">
-              复制该文本
-            </el-button>
-          </template>
-        </warp>
-      </el-col>
-      <el-col :span="6">
-        <warp title="v-debounce 指令">
-          <template #default>
-            <!-- FIXME: 示例代码 -->
-            <el-button type="primary" size="small" v-debounce:click_200="() => ElMessage.success('click 防抖...')">
-              防抖指令
-            </el-button>
-          </template>
-        </warp>
-      </el-col>
-      <el-col :span="6">
-        <warp title="v-draggable 指令">
-          <template #default>
-            <!-- FIXME: 示例代码 -->
-            <el-button type="primary" size="small" v-draggable> 拖拽我 </el-button>
-          </template>
-        </warp>
-      </el-col>
-    </el-row>
-    <el-row :gutter="20">
-      <el-col :span="6">
         <warp title="v-resize v-ellipsis 实现自动 tooltip">
           <template #default>
             <!-- FIXME: 示例代码 -->
@@ -140,15 +110,61 @@
           </template>
         </warp>
       </el-col>
-      <el-col :span="6">
-        <warp title="v-format-number 指令">
+    </el-row>
+    <el-row :gutter="20">
+      <el-col :span="4">
+        <warp title="v-copy 指令">
           <template #default>
-            <div v-format-number>1234567.89</div> 
-            <div v-format-number>1234567.81129</div> 
-            <div v-format-number>987654321kg</div> 
-            <div v-format-number>100000m</div>
-            <div v-format-number>100000 元</div>
+            <!-- FIXME: 示例代码 -->
+            <el-button type="primary" v-copy="`你复制了一段内容`" size="small">
+              复制该文本
+            </el-button>
           </template>
+        </warp>
+      </el-col>
+      <el-col :span="4">
+        <warp title="v-debounce 指令">
+          <template #default>
+            <!-- FIXME: 示例代码 -->
+            <el-button type="primary" size="small" v-debounce:click_200="() => ElMessage.success('click 防抖...')">
+              防抖指令
+            </el-button>
+          </template>
+        </warp>
+      </el-col>
+      <el-col :span="4">
+        <warp title="v-draggable 指令">
+          <template #default>
+            <!-- FIXME: 示例代码 -->
+            <el-button type="primary" size="small" v-draggable> 拖拽我 </el-button>
+          </template>
+        </warp>
+      </el-col>
+      <el-col :span="4">
+        <warp title="v-thousand-sep 指令">
+          <template #default>
+            <div v-thousand-sep>1234567.89</div> 
+            <div v-thousand-sep>1234567.81129</div> 
+            <div v-thousand-sep>987654321kg</div> 
+            <div v-thousand-sep>100000m</div>
+            <div v-thousand-sep>100000 元</div>
+          </template>
+        </warp>
+      </el-col>
+      <el-col :span="4">
+        <warp title="v-format-size 指令">
+          <template #default>
+            <div v-format-size="0"></div> 
+            <div v-format-size="1024"></div> 
+            <div v-format-size="10240"></div> 
+            <div v-format-size="1048576"></div>
+            <div v-format-size="10485760"></div>
+            <div v-format-size="104857600"></div>
+          </template>
+        </warp>
+      </el-col>
+      <el-col :span="4">
+        <warp title="...">
         </warp>
       </el-col>
     </el-row>

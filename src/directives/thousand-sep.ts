@@ -5,7 +5,7 @@ import type { Directive, DirectiveBinding } from "vue";
  * @param value 待格式化的值（数字/字符串）
  * @returns 格式化后的字符串
  */
-const formatNumberWithUnit = (value: number | string): string => {
+const thousandSepWithUnit = (value: number | string): string => {
   // 空值直接返回
   if (value === null || value === undefined || value === "") return "";
 
@@ -35,7 +35,7 @@ const formatNumberWithUnit = (value: number | string): string => {
  * Vue3 全局自定义指令：v-format-number
  * 功能：仅格式化普通元素的文本内容为千分位（支持带单位）
  */
-const formatNumberDirective: Directive = {
+const thousandSepDirective: Directive = {
   /**
    * 元素挂载时执行格式化
    * @param el 绑定的普通DOM元素
@@ -43,15 +43,15 @@ const formatNumberDirective: Directive = {
    */
   mounted(el: HTMLElement, binding: DirectiveBinding) {
     // 仅处理普通元素的文本内容
-    el.textContent = formatNumberWithUnit(el.textContent || "");
+    el.textContent = thousandSepWithUnit(el.textContent || "");
   },
 
   /**
    * 元素更新时重新格式化
    */
   updated(el: HTMLElement) {
-    el.textContent = formatNumberWithUnit(el.textContent || "");
+    el.textContent = thousandSepWithUnit(el.textContent || "");
   },
 };
 
-export default formatNumberDirective;
+export default thousandSepDirective;
