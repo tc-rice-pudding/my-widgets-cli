@@ -267,5 +267,26 @@ const routes: Array<RouteRecordRaw> = [
       },
     ],
   },
+  {
+    path: "/figmaTest",
+    component: Layout,
+    name: "Figma测试页",
+    meta: {
+      title: "Figma测试页",
+      affix: true,
+    },
+    icon: "icon-ren",
+    children: [
+      {
+        path: "/figmaTest",
+        name: "figmaTest",
+        component: () => import("@/views/widgets/figmaTest/index.vue"),
+        meta: {
+          affix: true,
+          title: "测试（Figma 1:1688）",
+        },
+      },
+    ],
+  },
 ];
 export default routes;

@@ -23,3 +23,11 @@ release-dist
 *.njsproj
 *.sln
 *.sw?
+
+# 环境变量（仅提交 .env.example）
+.env
+.env.*
+!.env.example
+
+# 本地 IDE / MCP 配置
+.trae/
